@@ -447,6 +447,19 @@
     .chip-cta{right:14px;bottom:calc(16px + env(safe-area-inset-bottom,0px));padding:11px 16px;font-size:12px}
     .cities .grid4{grid-template-columns:1fr}
     .citycard{height:240px}
+    /* phones now run a LIVE video behind the page — full-screen backdrop-filter
+       blurs over moving video grind mobile GPUs (reported as the site "getting
+       stuck"). Swap frosted glass for near-solid tints on small screens; the
+       look barely changes, the GPU cost collapses. */
+    .home-sheet::before{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(255,255,255,.93)}
+    .nav{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(255,255,255,.92)}
+    .wiz{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(255,255,255,.97)}
+    .card{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(255,255,255,.96)}
+    .modal{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(255,255,255,.98)}
+    .mscrim{backdrop-filter:none;-webkit-backdrop-filter:none}
+    .sticky-bar{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(255,255,255,.95)}
+    .chip-cta{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(255,255,255,.96)}
+    .d-stat,.stepc,.hl{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(255,255,255,.94)}
   }
 </style>
 </head>
@@ -1057,8 +1070,12 @@
         : detailHTML()) + '</div>';
     renderFooter();
     renderSticky();
-    el('bg').style.opacity = S.view === 'home' ? '1' : '0';
-    el('bg').style.transition = 'opacity .6s var(--ease)';
+    var bgEl = el('bg'), bgOn = S.view === 'home';
+    bgEl.style.opacity = bgOn ? '1' : '0';
+    bgEl.style.transition = 'opacity .6s var(--ease)';
+    /* off the home view the hero is invisible — stop its playback so phones
+       aren't decoding video behind the Properties and About pages */
+    if (!bgOn) bgEl.querySelectorAll('video').forEach(function (v) { v.pause(); });
     document.body.style.background = (S.view === 'properties') ? '#F6F8FB' : '#fff';
     observeReveals(v);
     if (S.view === 'home') countUps(v);
@@ -1334,8 +1351,8 @@
           mv.removeEventListener('loadeddata', swap);
           var bg = el('bg'), poster = bg.querySelector('img.poster');
           bg.insertBefore(mv, bg.querySelector('.scrim'));   /* under the scrim, over the poster */
-          scrubOnScroll(mv);
           idlePlay(mv);
+          scrubOnScroll(mv);
           requestAnimationFrame(function () { mv.style.opacity = '1'; });
           setTimeout(function () { if (poster && poster.parentNode) poster.parentNode.removeChild(poster); }, 800);
         });
@@ -1352,7 +1369,7 @@
     if (!videoBg || matchMedia('(max-width:760px)').matches ||
         matchMedia('(max-height:500px) and (pointer:coarse)').matches) {
       usePoster();
-      mobileUpgrade();
+      if (videoBg) mobileUpgrade();   /* ?video=0 means NO video, full stop */
       return;
     }
     /* any load/decode failure → clean poster fallback instead of a dark box */
@@ -1382,12 +1399,16 @@
     vid.src = 'assets/hero-ambient.mp4';   /* overrides the <source> */
     vid.preload = 'auto';
     vid.load();
-    scrubOnScroll(vid);   /* coarse but functional if the user scrolls early */
+    /* idlePlay BEFORE scrubOnScroll: its scroll listener must run first so the
+       idle baseline is set before the scrub computes its first target */
     idlePlay(vid);
+    scrubOnScroll(vid);   /* coarse but functional if the user scrolls early */
 
     var fullSrc = vid.canPlayType('video/mp4; codecs="av01.0.08M.08"')
       ? 'assets/hero-scroll-av1.mp4' : 'assets/hero-scroll.mp4';
     function fetchScrub() {
+      var c = navigator.connection;
+      if (c && c.saveData) return;   /* data saver: the ambient layer is enough */
       fetch(fullSrc).then(function (r) { return r.blob(); }).then(function (b) {
         var fv = document.createElement('video');
         fv.muted = true; fv.setAttribute('muted', '');
@@ -1400,9 +1421,10 @@
           var bg = el('bg');
           bg.insertBefore(fv, bg.querySelector('.scrim'));   /* under the scrim */
           try { fv.currentTime = vid.currentTime || 0; } catch (e) {}
-          scrubOnScroll(fv);
+          fv._idleBase = vid._idleBase || 0;                 /* carry the idle baseline over */
           vid.pause();
           idlePlay(fv);                                      /* idle motion continues */
+          scrubOnScroll(fv);
           requestAnimationFrame(function () { fv.style.opacity = '1'; });
           setTimeout(function () { if (vid.parentNode) vid.parentNode.removeChild(vid); }, 700);
         });
@@ -1419,23 +1441,38 @@
      until the visitor first scrolls, then the scroll owns the timeline (the
      scrub below). Muted + playsinline, so autoplay is allowed everywhere. */
   function idlePlay(vid) {
-    if (window.scrollY > 20) return;              /* already scrolling — scrub owns it */
+    if (window.scrollY > 20) {                    /* already scrolling — scrub owns it */
+      vid._idleBase = vid._idleBase || 0;
+      return;
+    }
     var stopped = false;
+    var CAP = 0.6;   /* idle plays at most 60% of the clip — the rest belongs to the scroll */
+    vid._idleActive = true;
     /* native 1.0x — fractional rates on 24fps footage judder on 60Hz displays */
     function go() {
-      if (stopped) return;
+      if (stopped || window.scrollY > 20) return;
       var p = vid.play();
       if (p && p.catch) p.catch(function () {});  /* autoplay blocked → poster frame, no error */
     }
     function stop() {
+      if (stopped) return;
       stopped = true; vid.pause();
+      /* the scroll continues FORWARD from wherever the idle motion reached —
+         scrubOnScroll maps scroll onto the remaining timeline, never backwards */
+      vid._idleBase = vid.currentTime || 0;
+      vid._idleActive = false;
       window.removeEventListener('scroll', stop);
       document.removeEventListener('visibilitychange', vis);
+      vid.removeEventListener('timeupdate', capCheck);
+    }
+    function capCheck() {
+      if (vid.duration && vid.currentTime >= vid.duration * CAP) stop();
     }
     /* browsers pause hidden-tab media — resume when the tab is fronted */
     function vis() { if (!document.hidden) go(); }
     window.addEventListener('scroll', stop, { passive: true });
     document.addEventListener('visibilitychange', vis);
+    vid.addEventListener('timeupdate', capCheck);
     go();
   }
 
@@ -1454,9 +1491,16 @@
 
     function onScroll() {
       if (!dur) return;
+      /* no work when the hero is not on screen (other views) or after this
+         element was swapped out — seeking an unseen video burns CPU per tick */
+      if (S.view !== 'home' || !vid.isConnected) return;
+      if (vid._idleActive) return;      // idle motion owns the timeline until first scroll
       var span = Math.max(1, window.innerHeight * SCRUB_VH);
       var p = Math.min(1, Math.max(0, window.scrollY / span));
-      target = p * (dur - 0.05);        // stay just off the very last frame
+      /* map the scroll onto the timeline REMAINING after idle playback, so the
+         video always continues forward from where the idle motion stopped */
+      var base = vid._idleBase || 0;
+      target = base + p * Math.max(0, (dur - 0.05) - base);
       seek();
     }
     function seek() {
