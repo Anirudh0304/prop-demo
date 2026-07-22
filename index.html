@@ -1353,16 +1353,45 @@
     }
     /* any load/decode failure → clean poster fallback instead of a dark box */
     vid.addEventListener('error', usePoster);
-    var src = vid.querySelector('source');
-    if (src) src.addEventListener('error', usePoster);
-    vid.preload = 'auto';
-    vid.load();
+    var srcEl = vid.querySelector('source');
+    if (srcEl) srcEl.addEventListener('error', usePoster);
     /* scrim is fully defined in CSS (see #bg .scrim) so poster and video modes
        share one legibility treatment — no JS override that could drift */
 
-    /* reduced motion: hold the first frame, no scroll-driven playback */
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    /* reduced motion: hold the first frame of the full file, no scroll scrub */
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      vid.preload = 'auto';
+      vid.load();
+      return;
+    }
+
+    /* Desktop quality ladder: a small 640px starter begins scrubbing within
+       about a second on any broadband; the full-quality file (AV1 where the
+       browser decodes it, else H.264) downloads behind it and swaps in at the
+       same timestamp once it can play through. If the full file ever fails,
+       the starter simply stays — no visible break. */
+    vid.src = 'assets/hero-scroll-starter.mp4';   /* overrides the <source> */
+    vid.preload = 'auto';
+    vid.load();
     scrubOnScroll(vid);
+
+    var fullSrc = vid.canPlayType('video/mp4; codecs="av01.0.08M.08"')
+      ? 'assets/hero-scroll-av1.mp4' : 'assets/hero-scroll.mp4';
+    var fv = document.createElement('video');
+    fv.muted = true; fv.setAttribute('muted', '');
+    fv.playsInline = true; fv.setAttribute('playsinline', '');
+    fv.preload = 'auto'; fv.src = fullSrc;
+    fv.style.opacity = '0'; fv.style.transition = 'opacity .5s ease';
+    fv.addEventListener('canplaythrough', function swap() {
+      fv.removeEventListener('canplaythrough', swap);
+      var bg = el('bg');
+      bg.insertBefore(fv, bg.querySelector('.scrim'));   /* under the scrim */
+      try { fv.currentTime = vid.currentTime || 0; } catch (e) {}
+      scrubOnScroll(fv);
+      requestAnimationFrame(function () { fv.style.opacity = '1'; });
+      setTimeout(function () { if (vid.parentNode) vid.parentNode.removeChild(vid); }, 700);
+    });
+    fv.load();
   })();
 
   /* Map vertical scroll to the hero video's timeline: scrolling down "plays" the
