@@ -1321,23 +1321,26 @@
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       var c = navigator.connection;
       if (c && (c.saveData || /(^|-)2g/.test(c.effectiveType || ''))) return;
-      var mv = document.createElement('video');
-      mv.muted = true; mv.setAttribute('muted', '');
-      mv.playsInline = true; mv.setAttribute('playsinline', '');
-      mv.preload = 'auto';
-      mv.src = 'assets/hero-scroll-mobile.mp4';
-      mv.style.opacity = '0'; mv.style.transition = 'opacity .6s ease';
-      mv.addEventListener('error', function () { if (mv.parentNode) mv.parentNode.removeChild(mv); });
-      mv.addEventListener('canplaythrough', function swap() {
-        mv.removeEventListener('canplaythrough', swap);
-        var bg = el('bg'), poster = bg.querySelector('img.poster');
-        bg.insertBefore(mv, bg.querySelector('.scrim'));   /* under the scrim, over the poster */
-        scrubOnScroll(mv);
-        idlePlay(mv);
-        requestAnimationFrame(function () { mv.style.opacity = '1'; });
-        setTimeout(function () { if (poster && poster.parentNode) poster.parentNode.removeChild(poster); }, 800);
-      });
-      mv.load();
+      /* download fully as data first — a streaming <video> can stall visibly
+         on cellular; a blob never appears until it can play perfectly */
+      fetch('assets/hero-scroll-mobile.mp4').then(function (r) { return r.blob(); }).then(function (b) {
+        var mv = document.createElement('video');
+        mv.muted = true; mv.setAttribute('muted', '');
+        mv.playsInline = true; mv.setAttribute('playsinline', '');
+        mv.preload = 'auto';
+        mv.src = URL.createObjectURL(b);
+        mv.style.opacity = '0'; mv.style.transition = 'opacity .6s ease';
+        mv.addEventListener('loadeddata', function swap() {
+          mv.removeEventListener('loadeddata', swap);
+          var bg = el('bg'), poster = bg.querySelector('img.poster');
+          bg.insertBefore(mv, bg.querySelector('.scrim'));   /* under the scrim, over the poster */
+          scrubOnScroll(mv);
+          idlePlay(mv);
+          requestAnimationFrame(function () { mv.style.opacity = '1'; });
+          setTimeout(function () { if (poster && poster.parentNode) poster.parentNode.removeChild(poster); }, 800);
+        });
+        mv.load();
+      }).catch(function () {});   /* fetch failed → poster stays */
     }
     /* phones start on the poster (instant paint, LCP-safe), then upgrade to a
        lightweight 960px all-intra encode (~8.5 MB vs 44.6 MB) in the background
@@ -1359,46 +1362,57 @@
     /* scrim is fully defined in CSS (see #bg .scrim) so poster and video modes
        share one legibility treatment — no JS override that could drift */
 
-    /* reduced motion: hold the first frame of the full file, no scroll scrub */
+    /* reduced motion: the static poster, zero video bytes */
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      vid.preload = 'auto';
-      vid.load();
+      usePoster();
       return;
     }
 
-    /* Desktop quality ladder: a small 640px starter begins scrubbing within
-       about a second on any broadband; the full-quality file (AV1 where the
-       browser decodes it, else H.264) downloads behind it and swaps in at the
-       same timestamp once it can play through. If the full file ever fails,
-       the starter simply stays — no visible break. */
-    vid.src = 'assets/hero-scroll-starter.mp4';   /* overrides the <source> */
+    /* Two-layer hero.
+       Layer 1, instantly: hero-ambient.mp4 is the SAME 1440p picture but
+       normally encoded (~4 Mbps), so it streams and plays smoothly from the
+       first second — full quality, no stutter, because browsers are built to
+       stream inter-coded video.
+       Layer 2, silently: the all-intra scrub file (AV1 where the browser
+       decodes it, else H.264) downloads as raw data via fetch. It is never on
+       screen while downloading, so it cannot visibly buffer, and it never
+       competes with layer 1 (the fetch starts only once the ambient file can
+       play through). Once fully local it swaps in at the same timestamp, and
+       scrubbing runs from memory. If the fetch fails, the ambient stays. */
+    vid.src = 'assets/hero-ambient.mp4';   /* overrides the <source> */
     vid.preload = 'auto';
     vid.load();
-    scrubOnScroll(vid);
-    vid.addEventListener('loadeddata', function once() {
-      vid.removeEventListener('loadeddata', once);
-      idlePlay(vid);
-    });
+    scrubOnScroll(vid);   /* coarse but functional if the user scrolls early */
+    idlePlay(vid);
 
     var fullSrc = vid.canPlayType('video/mp4; codecs="av01.0.08M.08"')
       ? 'assets/hero-scroll-av1.mp4' : 'assets/hero-scroll.mp4';
-    var fv = document.createElement('video');
-    fv.muted = true; fv.setAttribute('muted', '');
-    fv.playsInline = true; fv.setAttribute('playsinline', '');
-    fv.preload = 'auto'; fv.src = fullSrc;
-    fv.style.opacity = '0'; fv.style.transition = 'opacity .5s ease';
-    fv.addEventListener('canplaythrough', function swap() {
-      fv.removeEventListener('canplaythrough', swap);
-      var bg = el('bg');
-      bg.insertBefore(fv, bg.querySelector('.scrim'));   /* under the scrim */
-      try { fv.currentTime = vid.currentTime || 0; } catch (e) {}
-      scrubOnScroll(fv);
-      vid.pause();
-      idlePlay(fv);                                      /* keep the idle motion going */
-      requestAnimationFrame(function () { fv.style.opacity = '1'; });
-      setTimeout(function () { if (vid.parentNode) vid.parentNode.removeChild(vid); }, 700);
-    });
-    fv.load();
+    function fetchScrub() {
+      fetch(fullSrc).then(function (r) { return r.blob(); }).then(function (b) {
+        var fv = document.createElement('video');
+        fv.muted = true; fv.setAttribute('muted', '');
+        fv.playsInline = true; fv.setAttribute('playsinline', '');
+        fv.preload = 'auto';
+        fv.src = URL.createObjectURL(b);
+        fv.style.opacity = '0'; fv.style.transition = 'opacity .5s ease';
+        fv.addEventListener('loadeddata', function swap() {
+          fv.removeEventListener('loadeddata', swap);
+          var bg = el('bg');
+          bg.insertBefore(fv, bg.querySelector('.scrim'));   /* under the scrim */
+          try { fv.currentTime = vid.currentTime || 0; } catch (e) {}
+          scrubOnScroll(fv);
+          vid.pause();
+          idlePlay(fv);                                      /* idle motion continues */
+          requestAnimationFrame(function () { fv.style.opacity = '1'; });
+          setTimeout(function () { if (vid.parentNode) vid.parentNode.removeChild(vid); }, 700);
+        });
+        fv.load();
+      }).catch(function () {});
+    }
+    var kicked = false;
+    function kick() { if (!kicked) { kicked = true; fetchScrub(); } }
+    vid.addEventListener('canplaythrough', kick);
+    setTimeout(kick, 4000);   /* safety: start anyway if canplaythrough is late */
   })();
 
   /* Visible motion from the first moment: the clip plays slowly on its own
@@ -1407,7 +1421,7 @@
   function idlePlay(vid) {
     if (window.scrollY > 20) return;              /* already scrolling — scrub owns it */
     var stopped = false;
-    vid.playbackRate = 0.7;
+    /* native 1.0x — fractional rates on 24fps footage judder on 60Hz displays */
     function go() {
       if (stopped) return;
       var p = vid.play();
