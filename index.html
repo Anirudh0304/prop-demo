@@ -237,9 +237,6 @@
   .legal p{font-size:15px;margin-bottom:10px}
   .legal ul{padding-left:22px;margin-bottom:12px}
   .legal li{font-size:15px;color:var(--body);margin-bottom:6px}
-  .legal .contact-card{background:var(--tint);border:1px solid var(--hairline);border-radius:14px;
-    padding:18px 20px;margin-top:26px;font-size:15px}
-  .legal .contact-card a{color:var(--accent);text-decoration:none;font-weight:500}
 
   /* ---------- detail ---------- */
   .d-hero{position:relative;height:74vh;height:74svh;min-height:480px;overflow:hidden;background:var(--hero-base)}
@@ -914,9 +911,7 @@
       '<h2>9. Updates to this policy</h2>' +
       '<p>We may update this policy from time to time. Changes are posted on this page with a revised effective date.</p>' +
       '<h2>10. Contact us</h2>' +
-      '<div class="contact-card">Questions about this policy? Reach us at ' +
-        '<a href="mailto:support@propstarsolution.com">support@propstarsolution.com</a> or ' +
-        '<a href="tel:+918904558009">(+91) 89045 58009</a>.</div>' +
+      '<p>Questions about this policy? <button class="start-over" style="font-size:15px" onclick="App.openContact()">Contact us</button> and we\'ll help.</p>' +
     '</div></section>';
   }
 
@@ -950,9 +945,7 @@
       '<h2>10. Privacy</h2>' +
       '<p>How we handle your personal information is governed by our <button class="start-over" style="font-size:15px" onclick="App.goPrivacy()">Privacy Policy</button>.</p>' +
       '<h2>11. Contact us</h2>' +
-      '<div class="contact-card">Questions about these terms? Reach us at ' +
-        '<a href="mailto:support@propstarsolution.com">support@propstarsolution.com</a> or ' +
-        '<a href="tel:+918904558009">(+91) 89045 58009</a>.</div>' +
+      '<p>Questions about these terms? <button class="start-over" style="font-size:15px" onclick="App.openContact()">Contact us</button> and we\'ll help.</p>' +
     '</div></section>';
   }
 
