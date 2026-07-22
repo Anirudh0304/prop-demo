@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propstar — Admin console</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"></noscript>
+<style>
+  :root{
+    --accent:#3471DE; --accent-hover:#295FC0; --accent-soft:rgba(52,113,222,.08);
+    --ink:#0B1B2E; --body:#41505F; --muted:#7A8797; --faint:#9AA6B4;
+    --tint:#F6F8FB; --border:#E1E8F0; --hairline:#EAEFF5;
+    --danger:#C2483C; --danger-bg:#FEF6F5; --danger-border:#F3D9D6;
+    --ease:cubic-bezier(.22,.61,.36,1);
+    --serif:'Instrument Serif',Georgia,serif;
+    --sans:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --glass-border:rgba(255,255,255,.62);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--sans);background:#EEF2F7;color:var(--body);font-size:15px;
+    font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
+  button{font-family:inherit;cursor:pointer;border:none;background:none}
+  input,textarea,select{font-family:inherit;font-size:14px;color:var(--ink)}
+  h1,h2,h3.serif{font-family:var(--serif);font-weight:400;color:var(--ink)}
+  .eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);
+    color:#fff;font-weight:600;font-size:13.5px;padding:10px 20px;border-radius:999px;transition:all .3s var(--ease)}
+  .btn:hover{background:var(--accent-hover);transform:translateY(-1px);box-shadow:0 8px 22px rgba(52,113,222,.3)}
+  .btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--border)}
+  .btn.ghost:hover{background:var(--tint);box-shadow:none}
+  .btn.danger{background:var(--danger-bg);color:var(--danger);border:1px solid var(--danger-border)}
+  .btn.danger:hover{background:#FBE9E7;box-shadow:none}
+
+  /* ---------- sign-in ---------- */
+  .gate{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:22px}
+  .gate-card{width:100%;max-width:400px;background:rgba(255,255,255,.8);backdrop-filter:blur(24px) saturate(160%);
+    border:1px solid var(--glass-border);border-radius:24px;box-shadow:0 24px 70px rgba(20,40,70,.14);
+    padding:38px 36px;text-align:center;animation:up .5s var(--ease) both}
+  @keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+  .gate-card img{height:44px;margin:0 auto 16px}
+  .gate-card h1{font-size:30px;margin-bottom:6px}
+  .gate-card p{font-size:13.5px;color:var(--muted);margin-bottom:22px}
+  .gate-card input{width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:12px;outline:none;
+    background:#fff;text-align:center;transition:all .3s var(--ease)}
+  .gate-card input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(52,113,222,.12)}
+  .gate-card .btn{width:100%;margin-top:14px;padding:13px;border-radius:12px}
+  .gate-card .note{font-size:11.5px;color:var(--faint);margin-top:16px}
+
+  /* ---------- shell ---------- */
+  .shell-head{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.72);
+    backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);
+    border-bottom:1px solid rgba(255,255,255,.7);box-shadow:0 8px 30px rgba(20,40,70,.08)}
+  .shell-head .in{max-width:1240px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;
+    justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand img{height:26px}
+  .brand b{font-size:18px;color:var(--ink);font-weight:600}
+  .brand .badge{font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--accent);
+    background:var(--accent-soft);border:1px solid rgba(52,113,222,.25);padding:3px 9px;border-radius:999px;text-transform:uppercase}
+  .tabs{display:flex;background:rgba(20,40,70,.06);border-radius:999px;padding:4px}
+  .tabs button{font-size:13px;font-weight:600;color:#44586B;padding:8px 20px;border-radius:999px;transition:all .3s var(--ease)}
+  .tabs button.on{background:#fff;color:var(--ink);box-shadow:0 4px 14px rgba(20,40,70,.12)}
+  .actions{display:flex;gap:9px;align-items:center}
+  .actions .lnk{font-size:13px;font-weight:600;color:var(--accent);padding:9px 6px}
+  .actions .lnk:hover{color:var(--accent-hover)}
+
+  .main{max-width:1240px;margin:0 auto;padding:34px 24px 90px}
+  .main.quiz{max-width:920px}
+  .page-title{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+  .page-title h2{font-size:34px}
+  .page-title .cnt{font-size:13px;color:var(--muted)}
+  .search{width:100%;max-width:420px;padding:12px 18px;border:1px solid var(--border);border-radius:999px;
+    background:#fff;outline:none;margin-bottom:26px;transition:all .3s var(--ease)}
+  .search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(52,113,222,.12)}
+
+  /* ---------- catalogue cards ---------- */
+  .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .cat{display:flex;gap:16px;background:#fff;border:1px solid var(--hairline);border-radius:16px;
+    padding:16px;box-shadow:0 10px 30px rgba(20,40,70,.06);transition:all .35s var(--ease);animation:up .45s var(--ease) both}
+  .cat:hover{transform:translateY(-3px);box-shadow:0 20px 50px rgba(20,40,70,.12)}
+  .cat .thumb{width:118px;height:96px;border-radius:12px;object-fit:cover;flex:none;background:var(--tint)}
+  .cat .thumb.fallback{display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#E8EFF9,#DCE7F5);font-family:var(--serif);font-size:34px;color:rgba(52,113,222,.4)}
+  .cat .bd{flex:1;min-width:0}
+  .cat .dev{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+  .cat .nm{font-family:var(--serif);font-size:21px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;margin:2px 0}
+  .cat .lc{font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .meta-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+  .mchip{font-size:11px;font-weight:500;color:var(--body);background:var(--tint);
+    border:1px solid var(--hairline);padding:3px 10px;border-radius:999px;white-space:nowrap}
+  .cat .ops{display:flex;flex-direction:column;gap:8px;flex:none}
+  .iconbtn{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+    color:var(--muted);border:1px solid var(--hairline);background:#fff;transition:all .3s var(--ease)}
+  .iconbtn:hover{color:var(--accent);border-color:rgba(52,113,222,.4);background:var(--accent-soft)}
+  .iconbtn.del:hover{color:var(--danger);border-color:var(--danger-border);background:var(--danger-bg)}
+  .empty{text-align:center;color:var(--muted);padding:70px 0}
+  .reset-row{text-align:center;margin-top:34px}
+
+  /* ---------- editor modal ---------- */
+  .scrim{position:fixed;inset:0;z-index:80;background:rgba(11,20,32,.5);backdrop-filter:blur(6px);
+    display:flex;align-items:flex-start;justify-content:center;padding:30px 18px;overflow-y:auto;animation:fade .3s var(--ease) both}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .editor{width:100%;max-width:780px;background:rgba(255,255,255,.9);backdrop-filter:blur(34px) saturate(160%);
+    border:1px solid var(--glass-border);border-radius:22px;box-shadow:0 40px 100px rgba(11,20,32,.35);
+    animation:pop .45s var(--ease) both;margin:auto 0}
+  @keyframes pop{from{opacity:0;transform:translateY(26px) scale(.98)}to{opacity:1;transform:none}}
+  .editor .head{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;
+    padding:20px 28px;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--hairline);border-radius:22px 22px 0 0}
+  .editor .head h3{font-family:var(--serif);font-size:24px;color:var(--ink);font-weight:400}
+  .editor .head .mode{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .editor .body{padding:10px 28px 26px}
+  .esec{margin-top:22px}
+  .esec > h4{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+    padding-bottom:10px;border-bottom:1px solid var(--hairline);margin-bottom:16px}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .frow3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:6px}
+  .field input,.field textarea,.field select{width:100%;padding:11px 14px;border:1px solid var(--border);
+    border-radius:11px;background:#fff;outline:none;transition:all .3s var(--ease)}
+  .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(52,113,222,.12)}
+  .field textarea{resize:vertical;min-height:74px}
+  .hintline{font-size:11.5px;color:var(--faint);margin-top:5px}
+  .photo-grid{display:flex;flex-wrap:wrap;gap:12px}
+  .photo{position:relative;width:128px;height:92px;border-radius:11px;overflow:hidden;border:1px solid var(--hairline)}
+  .photo img{width:100%;height:100%;object-fit:cover}
+  .photo .cover{position:absolute;left:6px;bottom:6px;font-size:9px;font-weight:700;letter-spacing:.08em;
+    background:rgba(11,27,46,.75);color:#fff;padding:2px 8px;border-radius:999px}
+  .photo .rm{position:absolute;top:5px;right:5px;width:22px;height:22px;border-radius:50%;
+    background:rgba(11,27,46,.6);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px}
+  .photo .rm:hover{background:var(--danger)}
+  .addphoto{width:128px;height:92px;border:1.5px dashed #C3D0DF;border-radius:11px;display:flex;flex-direction:column;
+    gap:4px;align-items:center;justify-content:center;color:var(--muted);font-size:12px;font-weight:500;
+    cursor:pointer;transition:all .3s var(--ease);background:transparent}
+  .addphoto:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+  .match-panel{background:var(--tint);border:1px solid var(--hairline);border-radius:16px;padding:20px}
+  .match-panel .warn{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;color:#8a6d1f;
+    background:#FCF3D7;border:1px solid #F0E1AC;padding:3px 10px;border-radius:999px;margin-bottom:14px;text-transform:uppercase}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:12.5px;font-weight:500;padding:8px 15px;border-radius:999px;border:1px solid var(--border);
+    background:#fff;color:var(--body);transition:all .25s var(--ease)}
+  .chip:hover{border-color:#B9CCEE}
+  .chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .err-banner{margin:14px 0 0;font-size:13px;color:var(--danger);background:var(--danger-bg);
+    border:1px solid var(--danger-border);border-radius:11px;padding:10px 14px}
+  .editor .foot{position:sticky;bottom:0;display:flex;justify-content:flex-end;gap:10px;padding:16px 28px;
+    background:rgba(255,255,255,.85);backdrop-filter:blur(20px);border-top:1px solid var(--hairline);border-radius:0 0 22px 22px}
+
+  /* ---------- quiz builder ---------- */
+  .qhead{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:24px}
+  .qcard{background:#fff;border:1px solid var(--hairline);border-radius:16px;box-shadow:0 10px 30px rgba(20,40,70,.06);
+    padding:22px 24px;margin-bottom:16px;animation:up .45s var(--ease) both}
+  .qcard h4{font-size:15px;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:10px}
+  .qcard .status{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+  .status.onn{color:#2E9E6B}.status.off{color:var(--faint)}
+  .toggle{position:relative;width:42px;height:24px;border-radius:999px;background:#CBD6E2;transition:background .3s var(--ease);flex:none}
+  .toggle.on{background:var(--accent)}
+  .toggle i{position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;
+    box-shadow:0 2px 6px rgba(11,20,32,.25);transition:transform .3s var(--ease)}
+  .toggle.on i{transform:translateX(18px)}
+  .qrow-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+  .subgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .loc-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .loc-chip{display:inline-flex;align-items:center;gap:7px;background:var(--tint);border:1px solid var(--hairline);
+    border-radius:999px;padding:4px 6px 4px 6px}
+  .loc-chip input{border:none;background:transparent;outline:none;font-size:12.5px;width:110px;padding:3px 6px}
+  .loc-chip button{color:var(--muted);font-size:11px;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .loc-chip button:hover{color:var(--danger);background:var(--danger-bg)}
+  .addmini{font-size:12.5px;font-weight:600;color:var(--accent);padding:6px 12px;border-radius:999px;
+    border:1.5px dashed rgba(52,113,222,.4);transition:all .25s var(--ease)}
+  .addmini:hover{background:var(--accent-soft)}
+  .optrow{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+  .optrow input{flex:1;padding:10px 13px;border:1px solid var(--border);border-radius:10px;background:#fff;outline:none}
+  .optrow input:focus{border-color:var(--accent)}
+  .note{font-size:12px;color:var(--faint);margin-top:10px}
+
+  /* ---------- json modal ---------- */
+  .json-modal{width:100%;max-width:680px;background:#fff;border-radius:20px;box-shadow:0 40px 100px rgba(11,20,32,.35);
+    padding:26px;animation:pop .4s var(--ease) both;margin:auto 0}
+  .json-modal textarea{width:100%;height:380px;font-family:ui-monospace,Consolas,monospace;font-size:12px;
+    border:1px solid var(--border);border-radius:12px;padding:14px;background:var(--tint);resize:vertical}
+  .json-modal .row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+
+  /* ---------- toast ---------- */
+  .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:90;display:flex;align-items:center;
+    gap:10px;background:#0E1B2C;color:#fff;font-size:14px;font-weight:500;padding:13px 22px;border-radius:999px;
+    box-shadow:0 18px 50px rgba(11,20,32,.4);animation:tin .4s var(--ease) both}
+  .toast .tick{color:#6FE3A6}
+  @keyframes tin{from{opacity:0;transform:translate(-50%,16px)}to{opacity:1;transform:translate(-50%,0)}}
+
+  @media(max-width:900px){
+    .cat-grid{grid-template-columns:1fr}
+    .frow,.frow3,.subgrid{grid-template-columns:1fr}
+    .shell-head .in{justify-content:center}
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<div id="modal-root"></div>
+<div id="toast-root"></div>
+
+<script src="propstar-data.js"></script>
+<script>
+(function () {
+  'use strict';
+  var P = window.PROPSTAR;
+  var AUTH_KEY = 'propstar_admin';
+
+  var S = {
+    authed: sessionStorage.getItem(AUTH_KEY) === '1',
+    tab: 'catalogue',            // catalogue | quiz
+    query: '',
+    props: P.load(),
+    editing: null,               // form model when editor open
+    editErr: '',
+    jsonOpen: false,
+    quizDraft: null,
+    toastTimer: null
+  };
+
+  function el(id) { return document.getElementById(id); }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  var I = {
+    edit: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></svg>',
+    trash: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>',
+    x: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>',
+    tick: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
+    pin: '📍', rupee: '₹', home: '🏠'
+  };
+  var STATUSES = ['Under construction', 'Ready to move', 'Pre-launch', 'New launch', 'Nearing possession'];
+  function lines(s) {
+    return String(s || '').split('\n').map(function (l) { return l.trim(); }).filter(Boolean);
+  }
+
+  function toast(msg) {
+    el('toast-root').innerHTML = '<div class="toast"><span class="tick">' + I.tick + '</span>' + esc(msg) + '</div>';
+    clearTimeout(S.toastTimer);
+    S.toastTimer = setTimeout(function () { el('toast-root').innerHTML = ''; }, 2600);
+  }
+
+  /* ============ sign-in ============ */
+  function gateHTML() {
+    return '<div class="gate"><div class="gate-card">' +
+      '<img src="assets/propstar-mark-96.png" alt="Propstar">' +
+      '<h1>Admin console</h1>' +
+      '<p>Curators only. Sign in to edit the catalogue and the quiz.</p>' +
+      '<form onsubmit="Admin.signIn(event)">' +
+        '<input id="pass" type="password" placeholder="Passcode" autocomplete="current-password">' +
+        '<button class="btn" type="submit">Enter console</button>' +
+      '</form>' +
+      '<div class="note">Prototype auth — any passcode works. Replace with real authentication before deployment.</div>' +
+    '</div></div>';
+  }
+
+  /* ============ shell ============ */
+  function shellHTML() {
+    return '<header class="shell-head"><div class="in">' +
+      '<div class="brand"><img src="assets/propstar-mark-96.png" alt=""><b>Propstar</b><span class="badge">Admin</span></div>' +
+      '<div class="tabs">' +
+        '<button class="' + (S.tab === 'catalogue' ? 'on' : '') + '" onclick="Admin.setTab(\'catalogue\')">Catalogue</button>' +
+        '<button class="' + (S.tab === 'quiz' ? 'on' : '') + '" onclick="Admin.setTab(\'quiz\')">Quiz builder</button>' +
+      '</div>' +
+      '<div class="actions">' +
+        '<a class="lnk" href="index.html" target="_blank" rel="noopener" style="text-decoration:none">View site →</a>' +
+        (S.tab === 'catalogue'
+          ? '<button class="btn ghost" onclick="Admin.openJson()">Copy JSON</button>' +
+            '<button class="btn" onclick="Admin.openNew()">+ Add property</button>'
+          : '') +
+      '</div>' +
+    '</div></header>' +
+    (S.tab === 'catalogue' ? catalogueHTML() : quizHTML());
+  }
+
+  /* ============ catalogue ============ */
+  function catalogueHTML() {
+    var q = S.query.toLowerCase();
+    var list = S.props.filter(function (p) {
+      return !q || [p.name, p.developer, p.location].join(' ').toLowerCase().indexOf(q) >= 0;
+    });
+    return '<main class="main">' +
+      '<div class="page-title"><h2>Property catalogue</h2>' +
+        '<span class="cnt">' + S.props.length + ' project' + (S.props.length === 1 ? '' : 's') + ' live on the site</span></div>' +
+      '<input class="search" type="search" placeholder="Search by name, developer, or location…" value="' + esc(S.query) + '" oninput="Admin.search(this.value)">' +
+      (list.length
+        ? '<div class="cat-grid">' + list.map(catCard).join('') + '</div>'
+        : '<div class="empty">No projects match “' + esc(S.query) + '”.</div>') +
+      '<div class="reset-row"><button class="btn danger" onclick="Admin.resetSeed()">Reset to sample catalogue</button></div>' +
+    '</main>';
+  }
+
+  function catCard(p) {
+    var bands = (p.budgetBands || []).map(function (b) { return P.labelFor('budget', b); }).join(' / ');
+    var goals = (p.purposes || []).map(function (g) { return P.labelFor('purpose', g); }).join(' / ');
+    var loc = P.labelFor('city', p.locationKey) + (p.localityKey ? ' · ' + P.localityLabel(p.localityKey) : '');
+    return '<div class="cat">' +
+      ((p.images && p.images[0])
+        ? '<img class="thumb" src="' + esc(p.images[0]) + '" alt="" loading="lazy">'
+        : '<div class="thumb fallback">' + esc((p.name || '?').charAt(0)) + '</div>') +
+      '<div class="bd">' +
+        '<div class="dev">' + esc(p.developer) + '</div>' +
+        '<div class="nm">' + esc(p.name) + '</div>' +
+        '<div class="lc">' + esc(p.location) + '</div>' +
+        '<div class="meta-chips">' +
+          '<span class="mchip">' + I.pin + ' ' + esc(loc) + '</span>' +
+          (bands ? '<span class="mchip">' + I.rupee + ' ' + esc(bands) + '</span>' : '') +
+          (goals ? '<span class="mchip">' + I.home + ' ' + esc(goals) + '</span>' : '') +
+        '</div>' +
+      '</div>' +
+      '<div class="ops">' +
+        '<button class="iconbtn" title="Edit" onclick="Admin.openEdit(\'' + p.id + '\')">' + I.edit + '</button>' +
+        '<button class="iconbtn del" title="Delete" onclick="Admin.deleteProp(\'' + p.id + '\')">' + I.trash + '</button>' +
+      '</div>' +
+    '</div>';
+  }
+
+  /* ============ editor ============ */
+  function blankForm() {
+    return { id: null, developer: '', name: '', location: '', config: '', sizes: '',
+      status: STATUSES[0], possession: '', tags: ['', '', ''], description: '', curation: '',
+      amenities: '', connectivity: '', developerNote: '', images: [], photoDescription: '',
+      locationKey: (P.LOCATIONS[0] || {}).key || '', localityKey: '', budgetBands: [], purposes: [] };
+  }
+  function toForm(p) {
+    return { id: p.id, developer: p.developer || '', name: p.name || '', location: p.location || '',
+      config: p.config || '', sizes: p.sizes || '', status: p.status || STATUSES[0], possession: p.possession || '',
+      tags: [(p.tags || [])[0] || '', (p.tags || [])[1] || '', (p.tags || [])[2] || ''],
+      description: p.description || '', curation: (p.curation || []).join('\n'),
+      amenities: (p.amenities || []).join('\n'), connectivity: (p.connectivity || []).join('\n'),
+      developerNote: p.developerNote || '', images: (p.images || []).slice(),
+      photoDescription: p.photoDescription || '', locationKey: p.locationKey || '',
+      localityKey: p.localityKey || '', budgetBands: (p.budgetBands || []).slice(),
+      purposes: (p.purposes || []).slice() };
+  }
+
+  function editorHTML() {
+    var f = S.editing;
+    var isNew = !f.id;
+    var localities = f.locationKey ? P.localitiesFor(f.locationKey).filter(function (l) { return l.key !== 'any'; }) : [];
+    return '<div class="scrim" onclick="Admin.closeEditor()"><div class="editor" onclick="event.stopPropagation()">' +
+      '<div class="head"><div><div class="mode">' + (isNew ? 'New project' : 'Edit project') + '</div>' +
+        '<h3>' + (f.name ? esc(f.name) : 'Untitled project') + '</h3></div>' +
+        '<button class="iconbtn" onclick="Admin.closeEditor()">' + I.x + '</button></div>' +
+      '<div class="body">' +
+
+        '<div class="esec"><h4>Basics</h4>' +
+          '<div class="frow">' +
+            fld('Developer *', 'developer', f.developer, 'e.g. Sobha') +
+            fld('Project name *', 'name', f.name, 'e.g. Sobha Aranya') +
+          '</div>' +
+          fld('Location (shown to buyers) *', 'location', f.location, 'e.g. Worli, South Mumbai') +
+          '<div class="frow">' +
+            fld('Configuration', 'config', f.config, 'e.g. 3 & 4 BHK apartments') +
+            fld('Sizes', 'sizes', f.sizes, 'e.g. 1,600 – 2,900 sq.ft') +
+          '</div>' +
+          '<div class="frow">' +
+            '<div class="field"><label>Status</label><select onchange="Admin.set(\'status\',this.value)">' +
+              STATUSES.map(function (s) { return '<option' + (f.status === s ? ' selected' : '') + '>' + s + '</option>'; }).join('') +
+            '</select></div>' +
+            fld('Possession', 'possession', f.possession, 'e.g. Handover 2028') +
+          '</div>' +
+        '</div>' +
+
+        '<div class="esec"><h4>Photos</h4>' +
+          '<div class="photo-grid">' +
+            f.images.map(function (src, i) {
+              return '<div class="photo"><img src="' + esc(src) + '" alt="">' +
+                (i === 0 ? '<span class="cover">Cover</span>' : '') +
+                '<button class="rm" onclick="Admin.removePhoto(' + i + ')">' + I.x + '</button></div>';
+            }).join('') +
+            '<button class="addphoto" onclick="document.getElementById(\'file-in\').click()">＋<span>Add photos</span></button>' +
+          '</div>' +
+          '<input id="file-in" type="file" accept="image/*" multiple style="display:none" onchange="Admin.addPhotos(this)">' +
+          '<div class="hintline">First photo is the cover. Prototype stores photos in the browser — production uploads to object storage.</div>' +
+        '</div>' +
+
+        '<div class="esec"><h4>Display content</h4>' +
+          '<div class="frow3">' +
+            fld('Feature tag 1', 'tag0', f.tags[0], 'e.g. Sea-facing') +
+            fld('Feature tag 2', 'tag1', f.tags[1], 'e.g. 4 BHK') +
+            fld('Feature tag 3', 'tag2', f.tags[2], 'e.g. Ready 2027') +
+          '</div>' +
+          area('Overview (2–4 lines)', 'description', f.description, '') +
+          area('Why this project — one point per line', 'curation', f.curation, 'Lowest-density project on the corridor…') +
+          area('Amenities — one per line', 'amenities', f.amenities, 'Sky lounge…') +
+          area('Connectivity — one per line', 'connectivity', f.connectivity, '2 min to Worli Sea Link…') +
+          area('Developer track record', 'developerNote', f.developerNote, 'Years, delivered projects, listed/unlisted…') +
+        '</div>' +
+
+        '<div class="esec"><h4>Internal matching</h4>' +
+          '<div class="match-panel"><span class="warn">Never shown to visitors</span>' +
+            '<div class="frow">' +
+              '<div class="field"><label>Primary city</label><select onchange="Admin.setCity(this.value)">' +
+                P.LOCATIONS.map(function (l) {
+                  return '<option value="' + l.key + '"' + (f.locationKey === l.key ? ' selected' : '') + '>' + esc(l.label) + '</option>';
+                }).join('') + '</select></div>' +
+              '<div class="field"><label>Locality (optional)</label><select onchange="Admin.set(\'localityKey\',this.value)">' +
+                '<option value="">— No specific area —</option>' +
+                localities.map(function (l) {
+                  return '<option value="' + l.key + '"' + (f.localityKey === l.key ? ' selected' : '') + '>' + esc(l.label) + '</option>';
+                }).join('') + '</select></div>' +
+            '</div>' +
+            '<div class="field"><label>Budget band(s) — at least one *</label><div class="chips">' +
+              P.BUDGETS.map(function (b) {
+                return '<button type="button" class="chip' + (f.budgetBands.indexOf(b.key) >= 0 ? ' on' : '') + '" onclick="Admin.toggleArr(\'budgetBands\',\'' + b.key + '\')">' + esc(b.label) + '</button>';
+              }).join('') + '</div></div>' +
+            '<div class="field" style="margin-bottom:0"><label>Suits which goals — at least one *</label><div class="chips">' +
+              P.PURPOSES.map(function (g) {
+                return '<button type="button" class="chip' + (f.purposes.indexOf(g.key) >= 0 ? ' on' : '') + '" onclick="Admin.toggleArr(\'purposes\',\'' + g.key + '\')">' + esc(g.label) + '</button>';
+              }).join('') + '</div></div>' +
+            '<div class="hintline">These drive the ranking engine. A project with no budget band or goal can never surface in results.</div>' +
+          '</div>' +
+          (S.editErr ? '<div class="err-banner">' + esc(S.editErr) + '</div>' : '') +
+        '</div>' +
+
+      '</div>' +
+      '<div class="foot">' +
+        '<button class="btn ghost" onclick="Admin.closeEditor()">Cancel</button>' +
+        '<button class="btn" onclick="Admin.saveEdit()">' + (isNew ? 'Add project' : 'Save changes') + '</button>' +
+      '</div>' +
+    '</div></div>';
+  }
+
+  function fld(label, key, val, ph) {
+    var setter = key.indexOf('tag') === 0
+      ? 'Admin.setTag(' + key.slice(3) + ',this.value)'
+      : 'Admin.set(\'' + key + '\',this.value)';
+    return '<div class="field"><label>' + label + '</label>' +
+      '<input type="text" value="' + esc(val) + '" placeholder="' + esc(ph) + '" oninput="' + setter + '"></div>';
+  }
+  function area(label, key, val, ph) {
+    return '<div class="field"><label>' + label + '</label>' +
+      '<textarea placeholder="' + esc(ph) + '" oninput="Admin.set(\'' + key + '\',this.value)">' + esc(val) + '</textarea></div>';
+  }
+
+  /* ============ quiz builder ============ */
+  function quizHTML() {
+    if (!S.quizDraft) S.quizDraft = P.quizConfig();
+    var d = S.quizDraft;
+    var qmeta = [
+      { id: 'city', label: 'City' }, { id: 'locality', label: 'Locality' },
+      { id: 'budget', label: 'Budget' }, { id: 'purpose', label: 'Goal' }
+    ];
+    return '<main class="main quiz">' +
+      '<div class="qhead"><div><h2 style="font-size:34px">Quiz builder</h2>' +
+        '<p style="font-size:13px;color:var(--muted)">Edits publish to the live wizard only when you save.</p></div>' +
+      '<div style="display:flex;gap:9px">' +
+        '<button class="btn ghost" onclick="Admin.discardQuiz()">Discard</button>' +
+        '<button class="btn" onclick="Admin.saveQuizCfg()">Save & publish</button>' +
+      '</div></div>' +
+
+      '<div class="eyebrow" style="margin:8px 0 12px">1 · Question wording</div>' +
+      qmeta.map(function (m) {
+        var q = d.questions[m.id];
+        return '<div class="qcard"><div class="qrow-head">' +
+          '<h4>' + m.label + ' question <span class="status ' + (q.on ? 'onn' : 'off') + '">' + (q.on ? 'Shown' : 'Hidden') + '</span></h4>' +
+          '<button type="button" class="toggle' + (q.on ? ' on' : '') + '" onclick="Admin.toggleQ(\'' + m.id + '\')" aria-label="toggle"><i></i></button>' +
+        '</div>' +
+        '<div class="subgrid">' +
+          '<div class="field" style="margin:0"><label>Question</label><input value="' + esc(q.q) + '" oninput="Admin.qSet(\'' + m.id + '\',\'q\',this.value)"></div>' +
+          '<div class="field" style="margin:0"><label>Helper line</label><input value="' + esc(q.h) + '" oninput="Admin.qSet(\'' + m.id + '\',\'h\',this.value)"></div>' +
+        '</div></div>';
+      }).join('') +
+
+      '<div class="eyebrow" style="margin:30px 0 12px">2 · Cities & localities</div>' +
+      d.locations.map(function (c, ci) {
+        return '<div class="qcard"><div class="qrow-head" style="margin-bottom:12px">' +
+          '<h4>City ' + (ci + 1) + '</h4>' +
+          '<button class="iconbtn del" onclick="Admin.rmCity(' + ci + ')">' + I.trash + '</button></div>' +
+          '<div class="subgrid">' +
+            '<div class="field" style="margin:0"><label>City name</label><input value="' + esc(c.label) + '" oninput="Admin.locSet(' + ci + ',\'label\',this.value)"></div>' +
+            '<div class="field" style="margin:0"><label>Sub-label</label><input value="' + esc(c.hint || '') + '" oninput="Admin.locSet(' + ci + ',\'hint\',this.value)"></div>' +
+          '</div>' +
+          '<div class="loc-chips">' +
+            (c.localities || []).map(function (l, li) {
+              return '<span class="loc-chip"><input value="' + esc(l.label) + '" oninput="Admin.subSet(' + ci + ',' + li + ',this.value)">' +
+                '<button onclick="Admin.rmSub(' + ci + ',' + li + ')">' + I.x + '</button></span>';
+            }).join('') +
+            '<button class="addmini" onclick="Admin.addSub(' + ci + ')">+ Locality</button>' +
+          '</div></div>';
+      }).join('') +
+      '<button class="addmini" style="margin-bottom:8px" onclick="Admin.addCity()">+ Add city</button>' +
+
+      '<div class="eyebrow" style="margin:30px 0 12px">3 · Budget bands</div>' +
+      '<div class="qcard">' +
+        d.budgets.map(function (b, i) {
+          return '<div class="optrow"><input value="' + esc(b.label) + '" oninput="Admin.budSet(' + i + ',this.value)">' +
+            '<button class="iconbtn del" onclick="Admin.rmBud(' + i + ')">' + I.trash + '</button></div>';
+        }).join('') +
+        '<button class="addmini" onclick="Admin.addBud()">+ Add band</button>' +
+        '<div class="note">Order matters — neighbouring bands earn partial credit in matching (“just outside your range”).</div>' +
+      '</div>' +
+
+      '<div class="eyebrow" style="margin:30px 0 12px">4 · Goals</div>' +
+      '<div class="qcard">' +
+        d.purposes.map(function (g, i) {
+          return '<div class="optrow">' +
+            '<input value="' + esc(g.label) + '" placeholder="Label" oninput="Admin.purSet(' + i + ',\'label\',this.value)">' +
+            '<input value="' + esc(g.hint || '') + '" placeholder="Helper" oninput="Admin.purSet(' + i + ',\'hint\',this.value)">' +
+            '<button class="iconbtn del" onclick="Admin.rmPur(' + i + ')">' + I.trash + '</button></div>';
+        }).join('') +
+        '<button class="addmini" onclick="Admin.addPur()">+ Add goal</button>' +
+      '</div>' +
+
+      '<div class="reset-row"><button class="btn danger" onclick="Admin.resetQuiz()">Reset quiz to default</button></div>' +
+    '</main>';
+  }
+
+  /* ============ json export ============ */
+  function jsonHTML() {
+    return '<div class="scrim" onclick="Admin.closeJson()"><div class="json-modal" onclick="event.stopPropagation()">' +
+      '<div class="row"><h3 class="serif" style="font-size:24px">Catalogue as JSON</h3>' +
+        '<button class="btn" id="copy-btn" onclick="Admin.copyJson()">Copy to clipboard</button></div>' +
+      '<textarea readonly id="json-out">' + esc(JSON.stringify(S.props, null, 2)) + '</textarea>' +
+      '<div class="note" style="margin-top:10px">The manual bridge for seeding a real backend from prototype data.</div>' +
+    '</div></div>';
+  }
+
+  /* ============ render ============ */
+  function render() {
+    el('root').innerHTML = S.authed ? shellHTML() : gateHTML();
+    el('modal-root').innerHTML = S.editing ? editorHTML() : S.jsonOpen ? jsonHTML() : '';
+    document.body.style.overflow = (S.editing || S.jsonOpen) ? 'hidden' : '';
+  }
+  /* re-render only the modal (keeps input focus in the main page) */
+  function renderModal() {
+    el('modal-root').innerHTML = S.editing ? editorHTML() : S.jsonOpen ? jsonHTML() : '';
+    document.body.style.overflow = (S.editing || S.jsonOpen) ? 'hidden' : '';
+  }
+
+  /* ============ actions ============ */
+  var Admin = {
+    signIn: function (ev) {
+      ev.preventDefault();
+      sessionStorage.setItem(AUTH_KEY, '1');
+      S.authed = true; render();
+    },
+    setTab: function (t) { S.tab = t; if (t === 'quiz' && !S.quizDraft) S.quizDraft = P.quizConfig(); render(); },
+    search: function (v) {
+      S.query = v;
+      /* re-render only the grid to keep typing focus */
+      var grid = document.querySelector('.cat-grid, .empty');
+      var q = v.toLowerCase();
+      var list = S.props.filter(function (p) {
+        return !q || [p.name, p.developer, p.location].join(' ').toLowerCase().indexOf(q) >= 0;
+      });
+      if (grid) {
+        var html = list.length
+          ? '<div class="cat-grid">' + list.map(catCard).join('') + '</div>'
+          : '<div class="empty">No projects match “' + esc(v) + '”.</div>';
+        grid.outerHTML = html;
+      }
+    },
+
+    openNew: function () { S.editing = blankForm(); S.editErr = ''; renderModal(); },
+    openEdit: function (id) {
+      var p = S.props.find(function (o) { return o.id === id; });
+      if (p) { S.editing = toForm(p); S.editErr = ''; renderModal(); }
+    },
+    closeEditor: function () { S.editing = null; S.editErr = ''; renderModal(); },
+
+    set: function (k, v) { S.editing[k] = v; },
+    setTag: function (i, v) { S.editing.tags[i] = v; },
+    setCity: function (v) { S.editing.locationKey = v; S.editing.localityKey = ''; renderModal(); },
+    toggleArr: function (k, key) {
+      var a = S.editing[k], i = a.indexOf(key);
+      if (i >= 0) a.splice(i, 1); else a.push(key);
+      renderModal();
+    },
+
+    addPhotos: function (input) {
+      var files = Array.prototype.slice.call(input.files || []);
+      if (!files.length) return;
+      var left = files.length;
+      files.forEach(function (f) {
+        var r = new FileReader();
+        r.onload = function () {
+          S.editing.images.push(r.result);
+          if (--left === 0) renderModal();
+        };
+        r.readAsDataURL(f);
+      });
+      input.value = '';
+    },
+    removePhoto: function (i) { S.editing.images.splice(i, 1); renderModal(); },
+
+    saveEdit: function () {
+      var f = S.editing;
+      if (!f.developer.trim() || !f.name.trim() || !f.location.trim()) {
+        S.editErr = 'Developer, project name, and location are required.'; renderModal(); return;
+      }
+      if (!f.budgetBands.length || !f.purposes.length) {
+        S.editErr = 'Pick at least one budget band and one goal — otherwise this project can never surface in results.'; renderModal(); return;
+      }
+      var rec = {
+        id: f.id || (P.slug(f.name) + '-' + P.uid().slice(0, 4)),
+        developer: f.developer.trim(), name: f.name.trim(), location: f.location.trim(),
+        status: f.status, possession: f.possession.trim(), config: f.config.trim(), sizes: f.sizes.trim(),
+        tags: f.tags.map(function (t) { return t.trim(); }).filter(Boolean).slice(0, 3),
+        description: f.description.trim(),
+        curation: lines(f.curation), amenities: lines(f.amenities), connectivity: lines(f.connectivity),
+        developerNote: f.developerNote.trim(), images: f.images.slice(),
+        photoDescription: f.photoDescription,
+        locationKey: f.locationKey, localityKey: f.localityKey || '',
+        nearbyKeys: [], budgetBands: f.budgetBands.slice(), purposes: f.purposes.slice()
+      };
+      var i = S.props.findIndex(function (o) { return o.id === rec.id; });
+      var isNew = i < 0;
+      if (isNew) S.props.unshift(rec); else S.props[i] = rec;
+      P.save(S.props);
+      S.editing = null; S.editErr = '';
+      render();
+      toast(isNew ? 'Project added to the catalogue.' : 'Project updated.');
+    },
+
+    deleteProp: function (id) {
+      var p = S.props.find(function (o) { return o.id === id; });
+      if (!p) return;
+      if (!confirm('Delete “' + p.name + '” from the catalogue? This cannot be undone.')) return;
+      S.props = S.props.filter(function (o) { return o.id !== id; });
+      P.save(S.props);
+      render();
+      toast('Project deleted.');
+    },
+
+    resetSeed: function () {
+      if (!confirm('Replace the current catalogue with the 6 sample projects?')) return;
+      S.props = P.resetSeed();
+      render();
+      toast('Sample catalogue restored.');
+    },
+
+    openJson: function () { S.jsonOpen = true; renderModal(); },
+    closeJson: function () { S.jsonOpen = false; renderModal(); },
+    copyJson: function () {
+      var ta = el('json-out');
+      ta.select();
+      var done = function () { el('copy-btn').textContent = 'Copied ✓'; };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(ta.value).then(done, function () { document.execCommand('copy'); done(); });
+      } else { document.execCommand('copy'); done(); }
+    },
+
+    /* --- quiz builder --- */
+    toggleQ: function (id) { var q = S.quizDraft.questions[id]; q.on = !q.on; render(); },
+    qSet: function (id, k, v) { S.quizDraft.questions[id][k] = v; },
+    locSet: function (ci, k, v) { S.quizDraft.locations[ci][k] = v; },
+    subSet: function (ci, li, v) { S.quizDraft.locations[ci].localities[li].label = v; },
+    addSub: function (ci) {
+      var c = S.quizDraft.locations[ci];
+      c.localities = c.localities || [];
+      c.localities.push({ key: 'loc-' + P.uid(), label: '' });
+      render();
+    },
+    rmSub: function (ci, li) { S.quizDraft.locations[ci].localities.splice(li, 1); render(); },
+    addCity: function () {
+      S.quizDraft.locations.push({ key: 'city-' + P.uid(), label: '', hint: '', localities: [] });
+      render();
+    },
+    rmCity: function (ci) {
+      if (!confirm('Remove this city? Projects keyed to it will stop matching until re-assigned.')) return;
+      S.quizDraft.locations.splice(ci, 1); render();
+    },
+    budSet: function (i, v) { S.quizDraft.budgets[i].label = v; },
+    addBud: function () { S.quizDraft.budgets.push({ key: 'bud-' + P.uid(), label: '' }); render(); },
+    rmBud: function (i) { S.quizDraft.budgets.splice(i, 1); render(); },
+    purSet: function (i, k, v) { S.quizDraft.purposes[i][k] = v; },
+    addPur: function () { S.quizDraft.purposes.push({ key: 'pur-' + P.uid(), label: '', hint: '' }); render(); },
+    rmPur: function (i) { S.quizDraft.purposes.splice(i, 1); render(); },
+
+    discardQuiz: function () { S.quizDraft = P.quizConfig(); render(); toast('Draft discarded.'); },
+    saveQuizCfg: function () {
+      var d = JSON.parse(JSON.stringify(S.quizDraft));
+      d.locations = d.locations.filter(function (c) { return c.label.trim(); });
+      d.locations.forEach(function (c) {
+        c.localities = (c.localities || []).filter(function (l) { return l.label.trim(); });
+      });
+      d.budgets = d.budgets.filter(function (b) { return b.label.trim(); });
+      d.purposes = d.purposes.filter(function (g) { return g.label.trim(); });
+      if (!d.locations.length || !d.budgets.length || !d.purposes.length) {
+        alert('Keep at least one city, one budget band, and one goal.'); return;
+      }
+      var anyOn = ['city', 'locality', 'budget', 'purpose'].some(function (k) { return d.questions[k].on; });
+      if (!anyOn) {
+        alert('At least one question must be shown — otherwise the wizard has nothing to ask.'); return;
+      }
+      if (d.questions.locality.on && !d.questions.city.on) {
+        alert('The locality question needs the city question on — localities are chosen per city.'); return;
+      }
+      P.saveQuiz(d);
+      S.quizDraft = P.quizConfig();
+      render();
+      toast('Quiz published to the live site.');
+    },
+    resetQuiz: function () {
+      if (!confirm('Restore the default quiz? This replaces the live quiz config.')) return;
+      P.resetQuiz();
+      S.quizDraft = P.quizConfig();
+      render();
+      toast('Default quiz restored.');
+    }
+  };
+  window.Admin = Admin;
+
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "propstar",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "serve",
+        ".",
+        "-l",
+        "3030",
+        "--no-clipboard"
+      ],
+      "port": 3030
+    }
+  ]
+}
