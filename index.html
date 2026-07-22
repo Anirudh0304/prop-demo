@@ -1333,6 +1333,7 @@
         var bg = el('bg'), poster = bg.querySelector('img.poster');
         bg.insertBefore(mv, bg.querySelector('.scrim'));   /* under the scrim, over the poster */
         scrubOnScroll(mv);
+        idlePlay(mv);
         requestAnimationFrame(function () { mv.style.opacity = '1'; });
         setTimeout(function () { if (poster && poster.parentNode) poster.parentNode.removeChild(poster); }, 800);
       });
@@ -1374,6 +1375,10 @@
     vid.preload = 'auto';
     vid.load();
     scrubOnScroll(vid);
+    vid.addEventListener('loadeddata', function once() {
+      vid.removeEventListener('loadeddata', once);
+      idlePlay(vid);
+    });
 
     var fullSrc = vid.canPlayType('video/mp4; codecs="av01.0.08M.08"')
       ? 'assets/hero-scroll-av1.mp4' : 'assets/hero-scroll.mp4';
@@ -1388,11 +1393,37 @@
       bg.insertBefore(fv, bg.querySelector('.scrim'));   /* under the scrim */
       try { fv.currentTime = vid.currentTime || 0; } catch (e) {}
       scrubOnScroll(fv);
+      vid.pause();
+      idlePlay(fv);                                      /* keep the idle motion going */
       requestAnimationFrame(function () { fv.style.opacity = '1'; });
       setTimeout(function () { if (vid.parentNode) vid.parentNode.removeChild(vid); }, 700);
     });
     fv.load();
   })();
+
+  /* Visible motion from the first moment: the clip plays slowly on its own
+     until the visitor first scrolls, then the scroll owns the timeline (the
+     scrub below). Muted + playsinline, so autoplay is allowed everywhere. */
+  function idlePlay(vid) {
+    if (window.scrollY > 20) return;              /* already scrolling — scrub owns it */
+    var stopped = false;
+    vid.playbackRate = 0.7;
+    function go() {
+      if (stopped) return;
+      var p = vid.play();
+      if (p && p.catch) p.catch(function () {});  /* autoplay blocked → poster frame, no error */
+    }
+    function stop() {
+      stopped = true; vid.pause();
+      window.removeEventListener('scroll', stop);
+      document.removeEventListener('visibilitychange', vis);
+    }
+    /* browsers pause hidden-tab media — resume when the tab is fronted */
+    function vis() { if (!document.hidden) go(); }
+    window.addEventListener('scroll', stop, { passive: true });
+    document.addEventListener('visibilitychange', vis);
+    go();
+  }
 
   /* Map vertical scroll to the hero video's timeline: scrolling down "plays" the
      zoom baked into the clip, scrolling up rewinds it. The video is re-encoded
@@ -1427,7 +1458,9 @@
     function start() {
       dur = vid.duration || 0; seeking = false; pending = false;
       if (!dur) return;
-      onScroll();
+      /* sync to the scroll position only when actually scrolled — at the top
+         this would seek to 0 and visibly restart the idle-play motion */
+      if (window.scrollY > 0) onScroll();
       /* Some static servers (python -m http.server, and others people reach for
          when they get this folder) ignore Range requests; the browser then
          reports the video unseekable and clamps every seek to frame 0 — the
