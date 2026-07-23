@@ -1,0 +1,52 @@
+{
+  "order": 180,
+  "id": "ceyone-echoes-of-eden",
+  "developer": "Sumo Group (Ceyone)",
+  "name": "Ceyone Echoes of Eden",
+  "location": "North Bengaluru",
+  "config": "3, 3.5 & 4 BHK villaments, duplexes & penthouses",
+  "sizes": "2,835 – 4,266 sq.ft built-up",
+  "tags": [
+    "57 exclusive homes",
+    "Private courtyards",
+    "Indo-European design"
+  ],
+  "description": "An ultra-luxury boutique villament community of just 57 homes on about 2 acres in North Bengaluru: ground-plus-one duplex villaments with backyard gardens and private pools, mid-level duplexes with internal courtyards, and sky villas on the top floor, in an Indo-European design.",
+  "curation": [
+    "Just 57 residences across three low-density blocks",
+    "Private courtyards for nearly every home, and private pools for select duplexes",
+    "About 5 minutes from Airport Road, before the toll"
+  ],
+  "amenities": [
+    "Clubhouse with gym and multipurpose hall",
+    "Rooftop infinity pools",
+    "Private plunge pools (select homes)",
+    "Terrace cafeteria",
+    "Yoga deck",
+    "Sensory park and elders park",
+    "Kids play area",
+    "Reflexology path"
+  ],
+  "connectivity": [
+    "About 5 min from Airport Road",
+    "Quick reach to North Bengaluru tech corridors"
+  ],
+  "images": [
+    "assets/projects/ceyone-echoes-of-eden-01.webp",
+    "assets/projects/ceyone-echoes-of-eden-02.webp",
+    "assets/projects/ceyone-echoes-of-eden-03.webp",
+    "assets/projects/ceyone-echoes-of-eden-04.webp",
+    "assets/projects/ceyone-echoes-of-eden-05.webp"
+  ],
+  "photoDescription": "Indo-European courtyard facades",
+  "locationKey": "bengaluru",
+  "localityKey": "blr-north",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b2"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

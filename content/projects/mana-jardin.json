@@ -1,0 +1,56 @@
+{
+  "order": 210,
+  "id": "mana-jardin",
+  "developer": "Mana Projects",
+  "name": "Mana Jardin",
+  "location": "Kodathi, Sarjapur Road, Bengaluru",
+  "possession": "Original ready, Jardin Neo about 2032",
+  "config": "2 & 3 BHK, plus 3 to 5 BHK in Jardin Neo",
+  "sizes": "1,217 – 1,845 sq.ft; Neo carpet 1,897 – 2,309 sq.ft",
+  "tags": [
+    "Ready original phase",
+    "Ultra-luxury Neo towers",
+    "Lake views"
+  ],
+  "description": "Two offerings under the Jardin name: the original ready-to-move low-rise community of 2 and 3 BHK homes, and Mana Jardin Neo, two 20-floor towers with only about 80 penthouse-style residences with lake views at Kodathi.",
+  "curation": [
+    "The original phase is ready to move into today",
+    "Jardin Neo holds only about 80 penthouse-style homes across two towers",
+    "Kodathi address near the Wipro SEZ and RGA Tech Park"
+  ],
+  "amenities": [
+    "Clubhouse with swimming pool",
+    "Gymnasium",
+    "Basketball court",
+    "Leisure gardens",
+    "Amphitheatre",
+    "Creche and day care",
+    "Jogging tracks",
+    "Covered parking"
+  ],
+  "connectivity": [
+    "Near Wipro SEZ and RGA Tech Park",
+    "Near Carmelaram railway station",
+    "Quick reach to the Outer Ring Road"
+  ],
+  "images": [
+    "assets/projects/mana-jardin-01.webp",
+    "assets/projects/mana-jardin-02.webp",
+    "assets/projects/mana-jardin-03.webp",
+    "assets/projects/mana-jardin-04.webp",
+    "assets/projects/mana-jardin-05.webp"
+  ],
+  "photoDescription": "Garden towers above a podium landscape",
+  "locationKey": "bengaluru",
+  "localityKey": "blr-sarjapur",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b1",
+    "b2",
+    "b3"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

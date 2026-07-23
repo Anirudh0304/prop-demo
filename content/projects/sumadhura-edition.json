@@ -1,0 +1,54 @@
+{
+  "order": 330,
+  "id": "sumadhura-edition",
+  "developer": "Sumadhura Infra",
+  "name": "Sumadhura Edition",
+  "location": "Whitefield, Bengaluru",
+  "config": "2, 3 & 4 BHK apartments",
+  "sizes": "1,280 – 2,295 sq.ft",
+  "tags": [
+    "British-manor theme",
+    "16 themed gardens",
+    "150+ amenities"
+  ],
+  "description": "A flagship British-manor-themed township of about 20 acres near ITPL in Whitefield, with around 1,600 homes, 76% open space, 16 themed gardens, and a 66,000 sq.ft colonial-style clubhouse with a two-level arrival lobby.",
+  "curation": [
+    "British classical architecture with colonnades and formal symmetry",
+    "16 themed gardens across more than 76% open space",
+    "Near ITPL, Brigade Tech Gardens, and the Whitefield metro corridor"
+  ],
+  "amenities": [
+    "66,000 sq.ft British-inspired clubhouse",
+    "Olympic-size pool plus rooftop pool",
+    "Gymnasium and yoga studio",
+    "Tennis and basketball courts",
+    "Co-working spaces and library",
+    "Mini theatre and amphitheatre",
+    "Cafeteria",
+    "150+ amenities"
+  ],
+  "connectivity": [
+    "Near ITPL and Brookefield",
+    "About 3-4 km from Whitefield metro (Purple Line)",
+    "Near Prestige Tech Park and Nexus Whitefield"
+  ],
+  "images": [
+    "assets/projects/sumadhura-edition-01.webp",
+    "assets/projects/sumadhura-edition-02.webp",
+    "assets/projects/sumadhura-edition-03.webp",
+    "assets/projects/sumadhura-edition-04.webp",
+    "assets/projects/sumadhura-edition-05.webp"
+  ],
+  "photoDescription": "Manor-style towers over formal gardens",
+  "locationKey": "bengaluru",
+  "localityKey": "blr-whitefield",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b1",
+    "b2"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

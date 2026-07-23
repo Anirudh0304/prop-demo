@@ -1,0 +1,55 @@
+{
+  "order": 80,
+  "id": "godrej-samaris",
+  "developer": "Godrej Properties",
+  "name": "Godrej Samaris",
+  "location": "Golf Course Road area, Gurugram",
+  "status": "New launch",
+  "possession": "August 2033",
+  "config": "3, 4 & 5.5 BHK residences",
+  "tags": [
+    "Ultra-luxury",
+    "84% open space",
+    "Gensler architecture"
+  ],
+  "description": "Godrej Samaris is an ultra-luxury, low-density development of 488 residences across five towers on about 7.5 acres, with about 84% open green space including a one-acre forest trail. Architecture is by Gensler with ARCOP and Cooper Hill, and construction is partnered with Tata Projects.",
+  "curation": [
+    "Low-density planning: 488 homes on 7.5 acres with four residences per core",
+    "About 84% open green space, including a one-acre forest trail",
+    "Two grand clubhouses of about 68,000 sq.ft with golf simulator and lounges"
+  ],
+  "amenities": [
+    "Two grand clubhouses (about 68,000 sq.ft)",
+    "Swimming pools",
+    "Golf simulator",
+    "Cigar and champagne lounges",
+    "Spa and wellness zones",
+    "Fitness studios and yoga room",
+    "Fine dining and entertainment zones",
+    "Jogging and cycling tracks"
+  ],
+  "connectivity": [
+    "Near Sector 53-54 Rapid Metro",
+    "Close to Cyber City and DLF Golf Course",
+    "About 18 km to IGI Airport"
+  ],
+  "developerNote": "Established in 1990, Godrej Properties is the first real estate company in India to have ISO certification, and is currently developing landmark projects across 15+ cities covering over 21.7 million square metres.",
+  "images": [
+    "assets/projects/godrej-samaris-01.webp",
+    "assets/projects/godrej-samaris-02.webp",
+    "assets/projects/godrej-samaris-03.webp",
+    "assets/projects/godrej-samaris-04.webp",
+    "assets/projects/godrej-samaris-05.webp"
+  ],
+  "photoDescription": "Dusk exterior with topiary garden",
+  "locationKey": "ncr",
+  "localityKey": "ncr-golfcourse",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b3"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

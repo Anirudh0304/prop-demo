@@ -1,0 +1,56 @@
+{
+  "order": 350,
+  "id": "sumadhura-solace",
+  "developer": "Sumadhura Infra",
+  "name": "Sumadhura Solace",
+  "location": "Thubarahalli, Whitefield, Bengaluru",
+  "status": "Under construction",
+  "possession": "December 2029",
+  "config": "3, 4 & 4.5 BHK apartments",
+  "sizes": "Carpet 1,194 – 3,297 sq.ft",
+  "tags": [
+    "Lakeside classical theme",
+    "No common walls",
+    "90+ amenities"
+  ],
+  "description": "An ultra-luxury classical-themed lakeside project of about 770 homes on 11.6 acres at Thubarahalli, with 80% open space arranged along a tree-canopied central green spine and homes designed without common walls.",
+  "curation": [
+    "No common walls between homes across the community",
+    "A tree-canopied central green spine through 80% open space",
+    "On the Varthur Road corridor near Marathahalli and ITPL"
+  ],
+  "amenities": [
+    "40,000 sq.ft clubhouse",
+    "Swimming pool and spa",
+    "Tennis, basketball, and badminton courts",
+    "Health centre",
+    "Creche",
+    "Mini theatre",
+    "Curated gardens",
+    "90+ amenities"
+  ],
+  "connectivity": [
+    "Thubarahalli, off Varthur Road",
+    "Near Marathahalli and the ORR",
+    "Near ITPL and the Purple Line metro"
+  ],
+  "images": [
+    "assets/projects/sumadhura-solace-01.webp",
+    "assets/projects/sumadhura-solace-02.webp",
+    "assets/projects/sumadhura-solace-03.webp",
+    "assets/projects/sumadhura-solace-04.webp",
+    "assets/projects/sumadhura-solace-05.webp"
+  ],
+  "photoDescription": "Lakeside towers with classical detailing",
+  "locationKey": "bengaluru",
+  "localityKey": "blr-whitefield",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b1",
+    "b2"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

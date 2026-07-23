@@ -1,0 +1,62 @@
+{
+  "order": 60,
+  "id": "godrej-varanya",
+  "developer": "Godrej Properties",
+  "name": "Godrej Varanya",
+  "location": "Kharghar, Navi Mumbai",
+  "status": "New launch",
+  "possession": "June 2034",
+  "config": "2 & 3 BHK apartments",
+  "sizes": "720 – 1,150 sq.ft",
+  "tags": [
+    "Hill-facing homes",
+    "Near NMIA",
+    "52,000 sq.ft podium"
+  ],
+  "description": "Godrej Varanya is a premium development at the foothills of the Kharghar Hills, Navi Mumbai. Set across about 6.5 acres, it offers 2 & 3 BHK homes with views of hills, mangroves, and creek, plus seamless metro, road, and rail connectivity, with Navi Mumbai International Airport about 16 minutes away.",
+  "curation": [
+    "One of the largest open podium spaces (about 52,000 sq.ft) in the Kharghar micro-market",
+    "A clubhouse of about 50,000 sq.ft with views of the Kharghar Hills, mangroves, and creek"
+  ],
+  "amenities": [
+    "Temperature-controlled indoor pool and outdoor swimming zones",
+    "Wellness spa and Zen courtyard",
+    "Multisport courts (padel, badminton, pickleball) and gymnasium",
+    "Landscaped podium with themed gardens",
+    "Amphitheatre and private mini-theatre",
+    "Children’s play areas and pet zones"
+  ],
+  "connectivity": [
+    "16 min (about 8.5 km) to Navi Mumbai International Airport",
+    "0.55 km to Utsav Chowk metro station",
+    "1 km to Kharghar railway station",
+    "0.1 km to Sion-Panvel Highway",
+    "Atal Setu (MTHL) for South Mumbai access",
+    "Near Central Park and Kharghar Valley Golf Course"
+  ],
+  "developerNote": "Established in 1990, Godrej Properties is the first real estate company in India to have ISO certification, and is currently developing landmark projects across 15+ cities covering over 21.7 million square metres.",
+  "images": [
+    "assets/projects/godrej-varanya-01.webp",
+    "assets/projects/godrej-varanya-02.webp",
+    "assets/projects/godrej-varanya-03.webp",
+    "assets/projects/godrej-varanya-04.webp",
+    "assets/projects/godrej-varanya-05.webp",
+    "assets/projects/godrej-varanya-06.webp",
+    "assets/projects/godrej-varanya-07.webp",
+    "assets/projects/godrej-varanya-08.webp"
+  ],
+  "photoDescription": "Towers at the foothills of the Kharghar Hills",
+  "locationKey": "navimumbai",
+  "localityKey": "nvm-kharghar",
+  "nearbyKeys": [
+    "mumbai"
+  ],
+  "budgetBands": [
+    "b1",
+    "b2"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

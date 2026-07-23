@@ -1,0 +1,8 @@
+# Netlify runs the content build on every deploy, so a CMS commit to
+# content/projects/ is validated and folded into content/catalogue.json
+# before the site goes live. A broken city or budget reference fails the
+# deploy rather than silently unmatching a property.
+
+[build]
+  command = "node scripts/build-content.js"
+  publish = "."

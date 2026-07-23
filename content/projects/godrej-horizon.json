@@ -1,0 +1,58 @@
+{
+  "order": 30,
+  "id": "godrej-horizon",
+  "developer": "Godrej Properties",
+  "name": "Godrej Horizon",
+  "location": "Wadala, Mumbai",
+  "status": "Under construction",
+  "possession": "May 2027",
+  "config": "2 & 3 BHK apartments",
+  "sizes": "750 – 1,400 sq.ft",
+  "tags": [
+    "Grand clubhouse",
+    "Sea & skyline views",
+    "2 & 3 BHK decks"
+  ],
+  "description": "Godrej Horizon is an under-construction development in Wadala, South-Central Mumbai, offering 2 & 3 BHK apartments. Spread over about 5 acres, it centres on a 5-storeyed grand clubhouse with 40+ amenities, with homes offering Eastern Bay, Arabian Sea, and Atal Setu skyline views.",
+  "curation": [
+    "5-storeyed grand clubhouse with 40+ lifestyle and sporting amenities",
+    "Deck homes with Eastern Bay, Arabian Sea, and Atal Setu skyline views"
+  ],
+  "amenities": [
+    "5-storeyed grand clubhouse",
+    "40+ amenities",
+    "Sporting amenities",
+    "Rooftop amenities",
+    "About 5 acres of open and green space"
+  ],
+  "connectivity": [
+    "Off Rafi Ahmed Kidwai Road, Wadala",
+    "Close to the Eastern Freeway",
+    "Views toward Atal Setu (MTHL)"
+  ],
+  "developerNote": "Established in 1990, Godrej Properties is the first real estate company in India to have ISO certification, and is currently developing landmark projects across 15+ cities covering over 21.7 million square metres.",
+  "images": [
+    "assets/projects/godrej-horizon-01.webp",
+    "assets/projects/godrej-horizon-02.webp",
+    "assets/projects/godrej-horizon-03.webp",
+    "assets/projects/godrej-horizon-04.webp",
+    "assets/projects/godrej-horizon-05.webp",
+    "assets/projects/godrej-horizon-06.webp",
+    "assets/projects/godrej-horizon-07.webp",
+    "assets/projects/godrej-horizon-08.webp"
+  ],
+  "photoDescription": "High-rise towers over the Wadala skyline",
+  "locationKey": "mumbai",
+  "localityKey": "mum-wadala",
+  "nearbyKeys": [
+    "navimumbai"
+  ],
+  "budgetBands": [
+    "b1",
+    "b2"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "order": 300,
+  "id": "sobha-elysia",
+  "developer": "Sobha Limited",
+  "name": "Sobha Elysia",
+  "location": "GIFT City",
+  "status": "Under construction",
+  "possession": "December 2030",
+  "config": "3 & 4 BHK apartments",
+  "sizes": "999 – 3,462 sq.ft",
+  "tags": [
+    "GIFT City address",
+    "Sky lounge",
+    "35+ amenities"
+  ],
+  "description": "A luxury project inside GIFT City, India’s first operational smart city: two towers of about 35 storeys with an 18th-floor sky lounge, an infinity pool, and a modern international facade, minutes from the GIFT City metro.",
+  "curation": [
+    "An address inside India’s first operational smart city",
+    "Sky lounge and sky garden on the 18th floor",
+    "About 35 minutes from the planned bullet-train terminus"
+  ],
+  "amenities": [
+    "20,000 sq.ft clubhouse",
+    "Sky lounge on the 18th floor",
+    "Lap and infinity pools with kids pool",
+    "Fitness terrace",
+    "Mini theatre",
+    "Badminton court",
+    "Serenity cove and reflexology walk",
+    "Celebration lawn"
+  ],
+  "connectivity": [
+    "Near GIFT City metro",
+    "On the NH-8 and SP Ring Road axis",
+    "About 20 km to Ahmedabad airport"
+  ],
+  "images": [
+    "assets/projects/sobha-elysia-01.webp",
+    "assets/projects/sobha-elysia-02.webp",
+    "assets/projects/sobha-elysia-03.webp",
+    "assets/projects/sobha-elysia-04.webp",
+    "assets/projects/sobha-elysia-05.webp"
+  ],
+  "photoDescription": "Twin towers on the GIFT City skyline",
+  "locationKey": "giftcity",
+  "localityKey": "",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b1",
+    "b2"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

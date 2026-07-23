@@ -1,0 +1,55 @@
+{
+  "order": 230,
+  "id": "mana-verdant",
+  "developer": "Mana Projects",
+  "name": "Mana Verdant",
+  "location": "Jakkur, North Bengaluru",
+  "status": "Under construction",
+  "possession": "December 2030",
+  "config": "2 & 3 BHK apartments",
+  "sizes": "700 – 1,283 sq.ft",
+  "tags": [
+    "Jakkur Lake views",
+    "Landscaped balconies",
+    "Near Manyata"
+  ],
+  "description": "A premium enclave of about 484 homes on nearly 5 acres near Jakkur Lake, with landscaped balconies and lake views from the tallest tower in the vicinity, minutes off Bellary Road in North Bengaluru.",
+  "curation": [
+    "Lake-view living beside Jakkur Lake",
+    "Landscaped private balconies as a design signature",
+    "0.2 km from Bellary Road, near Manyata Tech Park and the airport corridor"
+  ],
+  "amenities": [
+    "Clubhouse",
+    "Swimming pool",
+    "Gymnasium",
+    "Tennis and cricket courts",
+    "Reading room",
+    "Amphitheatre",
+    "Community hall",
+    "Children play area"
+  ],
+  "connectivity": [
+    "0.2 km to Bellary Road",
+    "Near Yelahanka and Manyata Tech Park",
+    "Near Nagawara metro and the airport"
+  ],
+  "images": [
+    "assets/projects/mana-verdant-01.webp",
+    "assets/projects/mana-verdant-02.webp",
+    "assets/projects/mana-verdant-03.webp",
+    "assets/projects/mana-verdant-04.webp",
+    "assets/projects/mana-verdant-05.webp"
+  ],
+  "photoDescription": "Tall tower with landscaped balconies",
+  "locationKey": "bengaluru",
+  "localityKey": "blr-north",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b1"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

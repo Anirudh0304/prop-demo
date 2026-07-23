@@ -1,0 +1,54 @@
+{
+  "order": 400,
+  "id": "white-lotus",
+  "developer": "White Lotus",
+  "name": "White Lotus Amanvana",
+  "location": "Devanahalli, Bengaluru",
+  "config": "4 BHK villas",
+  "sizes": "3,700 – 4,000 sq.ft built-up",
+  "tags": [
+    "Balinese design",
+    "7 villas per acre",
+    "Net-zero water"
+  ],
+  "description": "An ultra-luxury villa sanctuary of 95 homes across 14 acres in Devanahalli, at just seven villas per acre with 70% open space, designed on the Balinese Karang Jalananda philosophy with net-zero water planning.",
+  "curation": [
+    "Just seven villas per acre with 70% of the land left open",
+    "Balinese design with double-height ceilings and private gardens",
+    "Net-zero-water community, 15-25 minutes from the airport via IVC Road"
+  ],
+  "amenities": [
+    "25,000 sq.ft clubhouse",
+    "Swimming pool and spa",
+    "Tennis, pickleball, and padel courts",
+    "Cricket nets and mini golf",
+    "Amphitheatre",
+    "Pet park",
+    "Co-working spaces",
+    "Cafe and supermarket"
+  ],
+  "connectivity": [
+    "15-25 min from Kempegowda International Airport via IVC Road",
+    "Devanahalli, near the Nandi Hills corridor"
+  ],
+  "images": [
+    "assets/projects/white-lotus-01.webp",
+    "assets/projects/white-lotus-02.webp",
+    "assets/projects/white-lotus-03.webp",
+    "assets/projects/white-lotus-04.webp",
+    "assets/projects/white-lotus-05.webp"
+  ],
+  "photoDescription": "Balinese villas amid tropical gardens",
+  "locationKey": "bengaluru",
+  "localityKey": "blr-devanahalli",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b2",
+    "b3"
+  ],
+  "purposes": [
+    "live",
+    "second",
+    "invest"
+  ]
+}

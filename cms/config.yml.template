@@ -1,0 +1,218 @@
+# Sveltia CMS configuration — TEMPLATE.
+#
+# cms/config.yml is GENERATED from this file by scripts/build-content.js.
+# Edit this template, never config.yml directly, or your change is overwritten
+# on the next build. The #{...} markers are filled with the current city,
+# locality, budget, and purpose options from content/quiz.json so the dropdowns
+# can never drift out of step with the quiz.
+
+backend:
+  name: github
+  repo: Anirudh0304/prop-demo
+  branch: main
+
+# Uploads land beside the renders that are already committed.
+media_folder: assets/projects
+public_folder: assets/projects
+
+# Edits are committed straight to main, which is what triggers the Netlify
+# deploy. Switch to `editorial_workflow` if you ever want a draft/review step.
+publish_mode: simple
+
+collections:
+  - name: projects
+    label: Properties
+    label_singular: Property
+    description: >
+      Each property is one file. Prices are never shown on the site — put the
+      real range into Budget bands instead, which is what the match quiz uses.
+    folder: content/projects
+    extension: json
+    format: json
+    create: true
+    identifier_field: id
+    slug: '{{fields.id}}'
+    summary: '{{name}} — {{location}}'
+    sortable_fields: [order, name, developer]
+    fields:
+      - label: Display order
+        name: order
+        widget: number
+        value_type: int
+        hint: Lower shows first. Existing projects step by 10 so you can slot one between two others.
+
+      - label: ID
+        name: id
+        widget: string
+        pattern: ['^[a-z0-9-]+$', 'Lowercase letters, numbers and hyphens only']
+        hint: >
+          The shareable web address (#/project/THIS) and the filename. Changing
+          it on a live project breaks any link already shared.
+
+      - { label: Project name, name: name, widget: string }
+      - { label: Developer, name: developer, widget: string }
+      - { label: Location, name: location, widget: string, hint: 'Human readable, e.g. Yelahanka, Bengaluru' }
+      - { label: Configuration, name: config, widget: string, hint: 'e.g. 3 & 4 BHK' }
+      - { label: Sizes, name: sizes, widget: string, required: false, hint: 'e.g. 1,380 – 2,609 sq.ft' }
+
+      - label: Status
+        name: status
+        widget: select
+        required: false
+        options:
+          - New launch
+          - Under construction
+          - Nearing possession
+          - Ready to move
+          - Pre-launch
+
+      - { label: Possession, name: possession, widget: string, required: false, hint: 'e.g. May 2030' }
+
+      - label: Tags
+        name: tags
+        widget: list
+        field: { label: Tag, name: tag, widget: string }
+        hint: The first three appear on the card.
+
+      - { label: Description, name: description, widget: text, hint: 'The About paragraph on the project page.' }
+
+      - label: Our honest take
+        name: curation
+        widget: list
+        field: { label: Point, name: point, widget: string }
+
+      - label: Amenities
+        name: amenities
+        widget: list
+        field: { label: Amenity, name: amenity, widget: string }
+
+      - label: Getting around
+        name: connectivity
+        widget: list
+        field: { label: Point, name: point, widget: string }
+
+      - { label: About the developer, name: developerNote, widget: text, required: false }
+
+      - label: Images
+        name: images
+        widget: list
+        field: { label: Image, name: image, widget: image }
+        hint: The first image is the card and the page hero. The rest become the gallery.
+
+      - { label: Photo description, name: photoDescription, widget: string, required: false, hint: 'Not shown on the site yet. Useful as alt text later.' }
+
+      - label: City
+        name: locationKey
+        widget: select
+        options:
+#{CITY_OPTIONS}
+
+      - label: Locality
+        name: localityKey
+        widget: select
+        required: false
+        options:
+#{LOCALITY_OPTIONS}
+
+      - label: Also near these cities
+        name: nearbyKeys
+        widget: select
+        multiple: true
+        required: false
+        hint: Treated as a partial match in the quiz, e.g. Mumbai and Navi Mumbai.
+        options:
+#{NEARBY_OPTIONS}
+
+      - label: Budget bands
+        name: budgetBands
+        widget: select
+        multiple: true
+        hint: Never displayed. Used only so the quiz can match on price privately.
+        options:
+#{BUDGET_OPTIONS}
+
+      - label: Suits
+        name: purposes
+        widget: select
+        multiple: true
+        options:
+#{PURPOSE_OPTIONS}
+
+  - name: settings
+    label: Quiz
+    files:
+      - name: quiz
+        label: Match quiz
+        file: content/quiz.json
+        description: >
+          Careful: every property points at these keys. Renaming or deleting a
+          city, budget, or purpose key will fail the next build until the
+          properties using it are updated too.
+        fields:
+          - label: Questions
+            name: questions
+            widget: object
+            fields:
+              - label: City step
+                name: city
+                widget: object
+                fields:
+                  - { label: Show this step, name: 'on', widget: boolean }
+                  - { label: Question, name: q, widget: string }
+                  - { label: Hint, name: h, widget: string }
+              - label: Locality step
+                name: locality
+                widget: object
+                fields:
+                  - { label: Show this step, name: 'on', widget: boolean }
+                  - { label: Question, name: q, widget: string }
+                  - { label: Hint, name: h, widget: string }
+              - label: Budget step
+                name: budget
+                widget: object
+                fields:
+                  - { label: Show this step, name: 'on', widget: boolean }
+                  - { label: Question, name: q, widget: string }
+                  - { label: Hint, name: h, widget: string }
+              - label: Purpose step
+                name: purpose
+                widget: object
+                fields:
+                  - { label: Show this step, name: 'on', widget: boolean }
+                  - { label: Question, name: q, widget: string }
+                  - { label: Hint, name: h, widget: string }
+
+          - label: Cities
+            name: locations
+            widget: list
+            summary: '{{label}}'
+            fields:
+              - { label: Key, name: key, widget: string, pattern: ['^[a-z0-9-]+$', 'Lowercase letters, numbers and hyphens only'] }
+              - { label: Label, name: label, widget: string }
+              - { label: Hint, name: hint, widget: string, required: false }
+              - label: Localities
+                name: localities
+                widget: list
+                required: false
+                summary: '{{label}}'
+                fields:
+                  - { label: Key, name: key, widget: string, pattern: ['^[a-z0-9-]+$', 'Lowercase letters, numbers and hyphens only'] }
+                  - { label: Label, name: label, widget: string }
+
+          - label: Budget bands
+            name: budgets
+            widget: list
+            summary: '{{label}}'
+            hint: Order matters — cheapest first. Neighbouring bands count as a partial match.
+            fields:
+              - { label: Key, name: key, widget: string }
+              - { label: Label, name: label, widget: string }
+
+          - label: Purposes
+            name: purposes
+            widget: list
+            summary: '{{label}}'
+            fields:
+              - { label: Key, name: key, widget: string }
+              - { label: Label, name: label, widget: string }
+              - { label: Hint, name: hint, widget: string, required: false }

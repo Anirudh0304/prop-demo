@@ -1,0 +1,54 @@
+{
+  "order": 200,
+  "id": "ceyone-urban-retreat",
+  "developer": "Sri Balaji (Ceyone)",
+  "name": "Ceyone Urban Retreat",
+  "location": "Sarjapur Road, Bengaluru",
+  "config": "4 BHK villas",
+  "sizes": "2,975 – 3,800 sq.ft built-up",
+  "tags": [
+    "96 smart villas",
+    "Home automation",
+    "Opposite Azim Premji University"
+  ],
+  "description": "A smart, home-automated gated community of 96 exclusive 4 BHK villas on about 7 acres opposite Azim Premji University, with central green courtyards, private sit-out gardens, terrace gazebos, and water features throughout.",
+  "curation": [
+    "Home automation as standard across all 96 villas",
+    "Central and back courtyards bring light and ventilation into every home",
+    "Opposite Azim Premji University, about 100 m from the proposed Infosys campus"
+  ],
+  "amenities": [
+    "Clubhouse",
+    "Swimming pool",
+    "Fitness centre",
+    "Basketball court",
+    "Jogging and cycling tracks",
+    "Multipurpose hall",
+    "Landscaped gardens and water features",
+    "Convenience store"
+  ],
+  "connectivity": [
+    "Opposite Azim Premji University",
+    "About 2.2 km from the proposed Sarjapur metro",
+    "5 min from the Sarjapur-Attibele main road"
+  ],
+  "images": [
+    "assets/projects/ceyone-urban-retreat-01.webp",
+    "assets/projects/ceyone-urban-retreat-02.webp",
+    "assets/projects/ceyone-urban-retreat-03.webp",
+    "assets/projects/ceyone-urban-retreat-04.webp",
+    "assets/projects/ceyone-urban-retreat-05.webp"
+  ],
+  "photoDescription": "Contemporary villa with private garden",
+  "locationKey": "bengaluru",
+  "localityKey": "blr-sarjapur",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b1",
+    "b2"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

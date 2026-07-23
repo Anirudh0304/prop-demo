@@ -1,0 +1,55 @@
+{
+  "order": 150,
+  "id": "mana-dale",
+  "developer": "Mana Projects",
+  "name": "Mana Dale",
+  "location": "Kodathi, Sarjapur Road, Bengaluru",
+  "status": "Under construction",
+  "possession": "2027 onwards",
+  "config": "3 & 4 BHK apartments",
+  "sizes": "1,590 – 2,145 sq.ft",
+  "tags": [
+    "Garden rooms",
+    "70% open space",
+    "Near Wipro campus"
+  ],
+  "description": "Mana Dale is a nature-themed community of four G+29 blocks at Kodathi on Sarjapur Road, with over 70% open space landscaped as a tropical garden of intimate outdoor rooms: reading corners, meditation spots, play pods, and workout stations, planned along sun and wind paths.",
+  "curation": [
+    "A tropical landscape of intimate garden rooms, planned along sun and wind paths",
+    "A clubhouse of about 55,000 sq.ft with 45+ amenities",
+    "About 2-3 km from the Wipro campus and RGA Tech Park"
+  ],
+  "amenities": [
+    "55,000 sq.ft clubhouse",
+    "Swimming pool and infinity pool",
+    "Gymnasium and outdoor gym",
+    "Badminton and squash courts",
+    "Cricket net and golf putting",
+    "Skywalk and amphitheatre",
+    "Meditation and yoga decks",
+    "BBQ fire pits and party lawn"
+  ],
+  "connectivity": [
+    "At Kodathi, about 2-3 km from Wipro campus",
+    "Near RGA Tech Park",
+    "Near Carmelaram railway station",
+    "Quick reach to the Outer Ring Road"
+  ],
+  "images": [
+    "assets/projects/mana-dale-01.webp",
+    "assets/projects/mana-dale-02.webp",
+    "assets/projects/mana-dale-03.webp",
+    "assets/projects/mana-dale-04.webp"
+  ],
+  "photoDescription": "Twin towers above a landscaped entrance",
+  "locationKey": "bengaluru",
+  "localityKey": "blr-sarjapur",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b1"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

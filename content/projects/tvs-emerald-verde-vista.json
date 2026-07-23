@@ -1,0 +1,55 @@
+{
+  "order": 380,
+  "id": "tvs-emerald-verde-vista",
+  "developer": "TVS Emerald",
+  "name": "TVS Emerald Verde Vista",
+  "location": "OMR corridor, Chennai",
+  "status": "New launch",
+  "possession": "January 2030",
+  "config": "2, 3 & 4 BHK apartments",
+  "sizes": "952 – 2,676 sq.ft",
+  "tags": [
+    "Low-rise living",
+    "Central green grove",
+    "IGBC Gold pre-certified"
+  ],
+  "description": "A low-rise, low-density community of 355 homes in five-floor blocks arranged around an expansive central green grove on the OMR corridor, IGBC Gold pre-certified, about 3 km from the upcoming Siruseri metro.",
+  "curation": [
+    "Low-rise five-floor blocks around a central green grove",
+    "IGBC Gold pre-certified design with three open courtyards",
+    "On the OMR corridor near SIPCOT IT Park"
+  ],
+  "amenities": [
+    "10,000+ sq.ft clubhouse",
+    "Two-storey gymnasium",
+    "Swimming pool",
+    "Home theatre",
+    "Co-working space",
+    "Cricket pitch and skating rink",
+    "Rock-climbing wall",
+    "BBQ areas"
+  ],
+  "connectivity": [
+    "On the OMR corridor",
+    "About 3 km from the upcoming Siruseri metro",
+    "Near SIPCOT IT Park"
+  ],
+  "images": [
+    "assets/projects/tvs-emerald-verde-vista-01.webp",
+    "assets/projects/tvs-emerald-verde-vista-02.webp",
+    "assets/projects/tvs-emerald-verde-vista-03.webp",
+    "assets/projects/tvs-emerald-verde-vista-04.webp",
+    "assets/projects/tvs-emerald-verde-vista-05.webp"
+  ],
+  "photoDescription": "Low-rise blocks around a green grove",
+  "locationKey": "chennai",
+  "localityKey": "che-omr",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b1"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

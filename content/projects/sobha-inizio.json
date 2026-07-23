@@ -1,0 +1,57 @@
+{
+  "order": 310,
+  "id": "sobha-inizio",
+  "developer": "Sobha Limited",
+  "name": "Sobha Inizio",
+  "location": "Parel, Mumbai",
+  "possession": "March 2034",
+  "config": "1, 2 & 3 BHK apartments",
+  "sizes": "Carpet 498 – 1,224 sq.ft",
+  "tags": [
+    "64-storey icon",
+    "3 homes per floor",
+    "Sky Club"
+  ],
+  "description": "An ultra-luxury single tower of about 64 storeys in central Parel with only three residences per floor, homes elevated above the 10th level over stilt parking, and a Sky Club spanning the 63rd and 64th floors.",
+  "curation": [
+    "Only three residences per floor across about 310 homes",
+    "A Sky Club on the 63rd and 64th floors with an infinity terrace pool",
+    "Central Parel, minutes from Lower Parel, Worli, and BKC"
+  ],
+  "amenities": [
+    "Sky Club on floors 63-64",
+    "Infinity terrace pool with skyline views",
+    "Observation deck and sky lounge",
+    "Tennis and pickleball courts",
+    "Grand podium clubhouse",
+    "Creche",
+    "Cabanas",
+    "Reflexology walk"
+  ],
+  "connectivity": [
+    "Parel, near Lower Parel and Worli",
+    "Access via the Eastern Freeway and Atal Setu",
+    "Quick reach to BKC"
+  ],
+  "images": [
+    "assets/projects/sobha-inizio-01.webp",
+    "assets/projects/sobha-inizio-02.webp",
+    "assets/projects/sobha-inizio-03.webp",
+    "assets/projects/sobha-inizio-04.webp",
+    "assets/projects/sobha-inizio-05.webp"
+  ],
+  "photoDescription": "Slender tower over central Mumbai",
+  "locationKey": "mumbai",
+  "localityKey": "mum-parel",
+  "nearbyKeys": [
+    "navimumbai"
+  ],
+  "budgetBands": [
+    "b2",
+    "b3"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

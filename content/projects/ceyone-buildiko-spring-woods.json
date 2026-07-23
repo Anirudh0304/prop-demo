@@ -1,0 +1,54 @@
+{
+  "order": 170,
+  "id": "ceyone-buildiko-spring-woods",
+  "developer": "Buildiko Ventures",
+  "name": "Ceyone Buildiko Spring Woods",
+  "location": "Sarjapur Road, Bengaluru",
+  "config": "4 BHK triplex courtyard villas",
+  "sizes": "2,655 – 3,389 sq.ft",
+  "tags": [
+    "Courtyard villas",
+    "Living Street concept",
+    "Up to 5 gardens"
+  ],
+  "description": "A low-density gated community of 103 four-bedroom triplex courtyard villas on 6.75 acres, built around Bangalore’s first Living Street concept for walkable community living. Each villa has a flexible recreation room and up to five private garden spaces, from courtyard to rooftop.",
+  "curation": [
+    "Only 103 villas on 6.75 acres, with a walkable Living Street plan",
+    "Up to five private garden spaces per villa, including a sky deck and rooftop",
+    "About 5-10 minutes from the proposed Sarjapur Pink Line metro"
+  ],
+  "amenities": [
+    "Clubhouse",
+    "Indoor theatre",
+    "Indoor badminton and tennis courts",
+    "Gymnasium",
+    "Terrace gardens",
+    "Kids play area",
+    "Party hall",
+    "Jogging-friendly living streets"
+  ],
+  "connectivity": [
+    "5-10 min to the proposed Sarjapur metro",
+    "Near Wipro and Infosys campuses",
+    "Near Azim Premji University and DPS"
+  ],
+  "images": [
+    "assets/projects/ceyone-buildiko-spring-woods-01.webp",
+    "assets/projects/ceyone-buildiko-spring-woods-02.webp",
+    "assets/projects/ceyone-buildiko-spring-woods-03.webp",
+    "assets/projects/ceyone-buildiko-spring-woods-04.webp",
+    "assets/projects/ceyone-buildiko-spring-woods-05.webp"
+  ],
+  "photoDescription": "Courtyard villas along a landscaped street",
+  "locationKey": "bengaluru",
+  "localityKey": "blr-sarjapur",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b1",
+    "b2"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

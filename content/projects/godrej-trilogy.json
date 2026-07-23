@@ -1,0 +1,55 @@
+{
+  "order": 130,
+  "id": "godrej-trilogy",
+  "developer": "Godrej Properties",
+  "name": "Godrej Trilogy",
+  "location": "Worli, Mumbai",
+  "possession": "Target December 2031",
+  "config": "3 & 4 BHK sea-view residences",
+  "sizes": "1,752 – 2,773 sq.ft",
+  "tags": [
+    "Worli sea face",
+    "Landmark towers",
+    "Private elevators"
+  ],
+  "description": "Godrej Trilogy is a landmark residential development off Dr. Annie Besant Road in Worli, near the Coastal Road and the Worli Sea Face, with expansive 3 & 4 BHK sea-view residences across its Seaturf and Seafront towers, the taller rising 77 floors.",
+  "curation": [
+    "Sea-view residences near the Worli Sea Face and Coastal Road",
+    "A landmark Seafront tower of 77 floors",
+    "Private elevator access on select residences"
+  ],
+  "amenities": [
+    "Rooftop pool",
+    "Clubhouse and lounges",
+    "Gymnasium",
+    "Landscaped decks",
+    "Indoor games",
+    "Concierge lobby"
+  ],
+  "connectivity": [
+    "Off Dr. Annie Besant Road, Worli",
+    "Near the Mumbai Coastal Road",
+    "Near Mahalaxmi Racecourse and the Worli Sea Face"
+  ],
+  "developerNote": "Established in 1990, Godrej Properties is the first real estate company in India to have ISO certification, and is currently developing landmark projects across 15+ cities covering over 21.7 million square metres.",
+  "images": [
+    "assets/projects/godrej-trilogy-01.webp",
+    "assets/projects/godrej-trilogy-02.webp",
+    "assets/projects/godrej-trilogy-03.webp",
+    "assets/projects/godrej-trilogy-04.webp",
+    "assets/projects/godrej-trilogy-05.webp"
+  ],
+  "photoDescription": "Aerial twilight view of sea-face towers",
+  "locationKey": "mumbai",
+  "localityKey": "mum-worli",
+  "nearbyKeys": [
+    "navimumbai"
+  ],
+  "budgetBands": [
+    "b3"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

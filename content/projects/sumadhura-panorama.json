@@ -1,0 +1,54 @@
+{
+  "order": 340,
+  "id": "sumadhura-panorama",
+  "developer": "Sumadhura Group",
+  "name": "Sumadhura Panorama",
+  "location": "Devanahalli, Bengaluru",
+  "possession": "December 2027",
+  "config": "Villa plots",
+  "sizes": "1,200 – 4,000 sq.ft plots",
+  "tags": [
+    "Themed plotted community",
+    "5 min from airport toll",
+    "50+ amenities"
+  ],
+  "description": "A villa-plotted community of about 100 acres themed on five South Indian cultures, with six curated lifestyle zones and 539 plots in Phase 1, five minutes from the airport toll off Bellary Road.",
+  "curation": [
+    "Six lifestyle zones themed on five South Indian states",
+    "About 5 minutes from the airport toll on NH-44",
+    "A 45,000 sq.ft clubhouse with 50+ amenities"
+  ],
+  "amenities": [
+    "45,000 sq.ft clubhouse",
+    "Swimming pool",
+    "Indoor and outdoor gyms",
+    "Indoor badminton",
+    "Sauna and steam",
+    "Skate park and campfire",
+    "Amphitheatre",
+    "Themed parks"
+  ],
+  "connectivity": [
+    "5 min from the airport toll",
+    "Off NH-44 Bellary Road",
+    "Asphalted 18 m, 12 m, and 9 m internal roads"
+  ],
+  "images": [
+    "assets/projects/sumadhura-panorama-01.webp",
+    "assets/projects/sumadhura-panorama-02.webp",
+    "assets/projects/sumadhura-panorama-03.webp",
+    "assets/projects/sumadhura-panorama-04.webp",
+    "assets/projects/sumadhura-panorama-05.webp"
+  ],
+  "photoDescription": "Plotted community entrance boulevard",
+  "locationKey": "bengaluru",
+  "localityKey": "blr-devanahalli",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b1"
+  ],
+  "purposes": [
+    "invest",
+    "second"
+  ]
+}

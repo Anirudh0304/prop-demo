@@ -1,0 +1,52 @@
+{
+  "order": 220,
+  "id": "mana-trl",
+  "developer": "Mana Projects",
+  "name": "Mana TRL",
+  "location": "Sarjapur Road, Bengaluru",
+  "config": "2, 3, 3.5 & 4 BHK apartments",
+  "sizes": "760 – 2,852 sq.ft",
+  "tags": [
+    "Child-centric township",
+    "84% open space",
+    "Lakeside living"
+  ],
+  "description": "Bengaluru’s largest child-centric integrated township across 100+ acres beside Inventure Academy, with 84% open space, a lake-centric landscape, and vehicle-free pedestrian zones. Phase 1 spans about 31 acres of towers rising to 35 floors.",
+  "curation": [
+    "Planned around children: vehicle-free pathways, learning zones, and play parks",
+    "84% open space with a lakeside landscape",
+    "Next to Inventure Academy, near the Wipro SEZ"
+  ],
+  "amenities": [
+    "45,000+ sq.ft clubhouse with co-working",
+    "Multiple clubhouses and pools",
+    "Tennis, basketball, and cricket courts",
+    "Kids learning zones and play parks",
+    "Yoga decks and meditation zones",
+    "Amphitheatre",
+    "High-street retail"
+  ],
+  "connectivity": [
+    "Next to Inventure Academy",
+    "Near Wipro SEZ and Carmelaram",
+    "Quick reach to the Outer Ring Road"
+  ],
+  "images": [
+    "assets/projects/mana-trl-01.webp",
+    "assets/projects/mana-trl-02.webp",
+    "assets/projects/mana-trl-03.webp",
+    "assets/projects/mana-trl-04.webp",
+    "assets/projects/mana-trl-05.webp"
+  ],
+  "photoDescription": "Township towers over a lakeside landscape",
+  "locationKey": "bengaluru",
+  "localityKey": "blr-sarjapur",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b1"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

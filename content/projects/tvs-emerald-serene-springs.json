@@ -1,0 +1,50 @@
+{
+  "order": 370,
+  "id": "tvs-emerald-serene-springs",
+  "developer": "TVS Emerald",
+  "name": "TVS Emerald Serene Springs",
+  "location": "Chennai",
+  "config": "1 & 2 BHK senior-living residences",
+  "sizes": "959 – 1,217 sq.ft",
+  "tags": [
+    "Senior living",
+    "On-site clinic",
+    "Managed community"
+  ],
+  "description": "A senior-living gated community of about 237 residences managed by Serene Communities by Columbia Pacific, India’s largest senior-living operator, designed around safety, comfort, and active community life with structured wellness programs.",
+  "curation": [
+    "Professionally managed by India’s largest senior-living operator",
+    "On-site clinic with ambulance standby and physiotherapy",
+    "Senior-friendly design: ramps, wide corridors, non-slip floors, and emergency response"
+  ],
+  "amenities": [
+    "Clubhouse with community dining",
+    "Age-appropriate gymnasium and physiotherapy",
+    "On-site clinic and ambulance standby",
+    "Infinity walking pathway",
+    "Tennis and basketball courts",
+    "Fire pit and reading spaces",
+    "Curated meals and daily activities"
+  ],
+  "connectivity": [
+    "Chennai gated community with city access",
+    "Emergency response systems in every home"
+  ],
+  "images": [
+    "assets/projects/tvs-emerald-serene-springs-01.webp",
+    "assets/projects/tvs-emerald-serene-springs-02.webp",
+    "assets/projects/tvs-emerald-serene-springs-03.webp",
+    "assets/projects/tvs-emerald-serene-springs-04.webp",
+    "assets/projects/tvs-emerald-serene-springs-05.webp"
+  ],
+  "photoDescription": "Low-rise senior community gardens",
+  "locationKey": "chennai",
+  "localityKey": "",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b1"
+  ],
+  "purposes": [
+    "live"
+  ]
+}

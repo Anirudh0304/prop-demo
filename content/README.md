@@ -1,26 +1,59 @@
 # Content
 
-The site's content lives here, separate from its code. `propstar-data.js` fetches these
-two files at startup and everything else reads from that in-memory copy.
+The site's content lives here, separate from its code.
 
-| File | Holds |
-|---|---|
-| `catalogue.json` | The property collection (array of project objects) |
-| `quiz.json` | The match quiz: questions, cities, localities, budget bands, purposes |
+| Path | Holds | Edited by |
+|---|---|---|
+| `projects/<id>.json` | One file per property | Sveltia CMS at `/cms/` |
+| `quiz.json` | Cities, localities, budget bands, purposes | Sveltia CMS at `/cms/` |
+| `catalogue.json` | **Generated.** All projects merged, in display order | Nobody — do not edit |
 
-## Editing today
+## How a change reaches the site
 
-1. Open `/admin.html`, make changes, press **Copy JSON**.
-2. Paste into `catalogue.json` (or `quiz.json`), commit, push.
-3. Netlify redeploys and the change is live.
+1. Edit at **`/cms/`** (Sveltia CMS). Saving commits the changed file to `main`.
+2. Netlify runs `node scripts/build-content.js`, which validates everything and
+   regenerates `catalogue.json` and `cms/config.yml`.
+3. The site fetches `catalogue.json` and `quiz.json` at startup.
 
-Admin edits are also saved to the browser's own storage, so you see them immediately —
-but **only in that browser**. Committing the JSON is what publishes them to everyone.
+If a project points at a city, locality, budget band, or purpose that does not exist in
+`quiz.json` — or at an image file that isn't in the repo — **the build fails and the
+deploy stops**. That is deliberate: the site would otherwise keep working while quietly
+never matching that project. Fix what the build names and push again.
 
-## Moving to a hosted CMS
+Run the same check locally before pushing:
+
+```bash
+node scripts/build-content.js
+```
+
+`catalogue.json` is committed as well as generated, so the site still runs from a plain
+`npx serve .` with no build step. If you edit a project file by hand, run the build so
+the committed copy keeps up.
+
+The old `/admin.html` console still works and still has the quiz builder and JSON export,
+but its edits only ever live in **your own browser**. `/cms/` is the one that publishes.
+
+## Signing in to the CMS
+
+Sveltia commits directly to GitHub, so it needs access to the repo. Three ways in,
+easiest first:
+
+- **Sign In Using Access Token** — no setup. Create a GitHub personal access token with
+  repo scope (the sign-in dialog links straight to the pre-filled page) and paste it. The
+  token is kept in your own browser. Best for one or two people.
+- **Work with Local Repository** — no auth at all. Pick this clone's folder and edit the
+  files on disk, then commit yourself. Good for local work.
+- **Sign In with GitHub** — the real one-click flow, but it needs an OAuth relay because
+  GitHub won't authorise a browser directly. Sveltia publish a Cloudflare Worker for
+  this; once it's deployed, add its URL as `base_url` in `config.yml.template`. Worth
+  doing when more than a couple of people edit.
+
+Everyone who signs in needs write access to the repo, so their edits commit as them.
+
+## Moving to a different CMS later
 
 `fetchContent()` in `propstar-data.js` is the only function that knows where content
-comes from. Point it at a CMS (Sanity, Supabase, a Google Sheets export) and have it
+comes from. Point it at another source (Sanity, Supabase, a Sheets export) and have it
 resolve the same shape, and nothing else in the app changes:
 
 ```js
@@ -37,7 +70,8 @@ or is skipped entirely, so a sparse project is safe to publish.
 
 | Field | Type | Notes |
 |---|---|---|
-| `id` | string | Unique. Used in the URL: `#/project/<id>` — changing it breaks shared links |
+| `order` | number | Display order, lowest first. Existing projects step by 10 so one can be slotted between two others. Stripped from the built catalogue |
+| `id` | string | Unique, and must match the filename. Used in the URL: `#/project/<id>` — changing it breaks shared links |
 | `name` | string | Project name |
 | `developer` | string | Shown above the name |
 | `location` | string | Human-readable, e.g. `Yelahanka, Bengaluru` |

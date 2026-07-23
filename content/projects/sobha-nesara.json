@@ -1,0 +1,57 @@
+{
+  "order": 320,
+  "id": "sobha-nesara",
+  "developer": "Sobha Limited",
+  "name": "Sobha Nesara",
+  "location": "Kothrud, Pune",
+  "status": "Under construction",
+  "possession": "Phased, 2026-2027",
+  "config": "3, 3.5, 4 & 4.5 BHK, plus duplexes",
+  "sizes": "Carpet 1,449 – 2,846 sq.ft",
+  "tags": [
+    "NDA Hills foothills",
+    "Panoramic hill views",
+    "Pune’s largest pool"
+  ],
+  "description": "An ultra-premium hillside project of about 290 residences across three towers at the foothills of the NDA Hills in Kothrud, with panoramic hill views, about 58,000 sq.ft of amenities, and air noticeably cooler than the city centre.",
+  "curation": [
+    "Hillside setting at the NDA Hills foothills, about 3 degrees cooler than the city",
+    "Pune’s largest residential swimming pool",
+    "Kothrud address near Chandani Chowk and the Mumbai-Pune Expressway"
+  ],
+  "amenities": [
+    "Pune’s largest residential pool",
+    "Clubhouse and gymnasium",
+    "Spa and yoga room",
+    "Sensory garden",
+    "Activity lawns",
+    "Senior citizen zone",
+    "EV charging",
+    "Sundeck seating"
+  ],
+  "connectivity": [
+    "Kothrud, near Chandani Chowk",
+    "Off the Mumbai-Pune Expressway",
+    "Near Bavdhan and Lohia Jain IT Park",
+    "About 15 km to Pune airport"
+  ],
+  "images": [
+    "assets/projects/sobha-nesara-01.webp",
+    "assets/projects/sobha-nesara-02.webp",
+    "assets/projects/sobha-nesara-03.webp",
+    "assets/projects/sobha-nesara-04.webp",
+    "assets/projects/sobha-nesara-05.webp"
+  ],
+  "photoDescription": "Hillside towers with double-height lobby",
+  "locationKey": "pune",
+  "localityKey": "pun-kothrud",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b1",
+    "b2"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

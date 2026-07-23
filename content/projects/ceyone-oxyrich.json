@@ -1,0 +1,53 @@
+{
+  "order": 190,
+  "id": "ceyone-oxyrich",
+  "developer": "Beautiful Boundaries",
+  "name": "Ceyone Oxyrich",
+  "location": "Chandapura-Anekal, Bengaluru",
+  "config": "3 & 4 BHK villas",
+  "sizes": "2,070 – 4,126 sq.ft",
+  "tags": [
+    "Mediterranean villas",
+    "Sky decks",
+    "Near Electronic City"
+  ],
+  "description": "A Mediterranean-inspired gated villa community of about 134 villas on 8 acres near Chandapura, with skylit kitchens, mezzanine lounges, open-to-sky showers, and private terrace gardens, finished with imported cladding brick.",
+  "curation": [
+    "Design-forward villas: skylit kitchens, mezzanine lounges, and sky decks",
+    "Multi-layered privacy separating bedrooms from living zones",
+    "About 20 minutes from Bommasandra metro and the Electronic City belt"
+  ],
+  "amenities": [
+    "Clubhouse",
+    "Amphitheatre",
+    "Landscaped open spaces",
+    "Children play area",
+    "Wide concrete internal roads",
+    "Sports and recreation amenities",
+    "24-hour water and power backup"
+  ],
+  "connectivity": [
+    "15 min to Chandapura Junction",
+    "20 min to Bommasandra metro",
+    "Near Electronic City, Jigani, and Hosur Road"
+  ],
+  "images": [
+    "assets/projects/ceyone-oxyrich-01.webp",
+    "assets/projects/ceyone-oxyrich-02.webp",
+    "assets/projects/ceyone-oxyrich-03.webp",
+    "assets/projects/ceyone-oxyrich-04.webp",
+    "assets/projects/ceyone-oxyrich-05.webp"
+  ],
+  "photoDescription": "Mediterranean villa exterior",
+  "locationKey": "bengaluru",
+  "localityKey": "blr-chandapura",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b1",
+    "b2"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

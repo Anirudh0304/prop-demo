@@ -1,0 +1,56 @@
+{
+  "order": 290,
+  "id": "sobha-altus",
+  "developer": "Sobha Limited",
+  "name": "Sobha Altus",
+  "location": "Dwarka Expressway, Gurugram",
+  "config": "3, 4 & 5 BHK, plus studio residences",
+  "sizes": "677 – 4,077 sq.ft",
+  "tags": [
+    "Parametric Wave design",
+    "Club Waverly",
+    "Near IGI Airport"
+  ],
+  "description": "An ultra-luxury community on the Dwarka Expressway with a distinctive fluid parametric Wave design: about 290 residences across three towers, minimal shared walls, no directly-facing units, and IGBC-rated wrap-around landscaping.",
+  "curation": [
+    "Sculptural parametric architecture by international designers",
+    "Minimal shared walls and no directly-facing homes",
+    "The Club Waverly: about 46,000 sq.ft of clubhouse with 30+ services"
+  ],
+  "amenities": [
+    "Club Waverly (about 46,000 sq.ft)",
+    "Temperature-controlled indoor pool",
+    "Infinity sky pools",
+    "Business lounge and co-working",
+    "Guest suites and cafe",
+    "Zen park and BBQ deck",
+    "Reflexology zone",
+    "Rooftop lounge"
+  ],
+  "connectivity": [
+    "On the Dwarka Expressway",
+    "About 10-15 min to IGI Airport and Aerocity",
+    "Metro within 500 m",
+    "Quick access to NH-48"
+  ],
+  "images": [
+    "assets/projects/sobha-altus-01.webp",
+    "assets/projects/sobha-altus-02.webp",
+    "assets/projects/sobha-altus-03.webp",
+    "assets/projects/sobha-altus-04.webp",
+    "assets/projects/sobha-altus-05.webp"
+  ],
+  "photoDescription": "Wave-form towers at dusk",
+  "locationKey": "ncr",
+  "localityKey": "ncr-dwarka",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b1",
+    "b2",
+    "b3"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

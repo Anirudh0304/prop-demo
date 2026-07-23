@@ -1,0 +1,61 @@
+{
+  "order": 50,
+  "id": "godrej-brooklyn-avenue",
+  "developer": "Godrej Properties",
+  "name": "Godrej Brooklyn Avenue",
+  "location": "Kukatpally, Hyderabad",
+  "status": "New launch",
+  "possession": "June 2031",
+  "config": "3, 3+ Utility & 4 BHK",
+  "sizes": "2,350 – 3,350 sq.ft",
+  "tags": [
+    "Brooklyn-inspired",
+    "72,000 sq.ft clubhouse",
+    "Near Hitech City"
+  ],
+  "description": "Godrej Brooklyn Avenue offers premium 3 & 4 BHK residences in Kukatpally, one of Hyderabad’s most coveted addresses, with Brooklyn-inspired architecture, modern amenities, and strong connectivity to major business hubs and city landmarks.",
+  "curation": [
+    "Brooklyn-inspired architecture with premium 3 & 4 BHK residences",
+    "A clubhouse of about 72,000 sq.ft with curated lifestyle experiences",
+    "In the heart of KPHB, one of Hyderabad’s most sought-after residential hubs"
+  ],
+  "amenities": [
+    "Grand clubhouse",
+    "Rooftop infinity pool",
+    "State-of-the-art gym",
+    "Indoor games and sports courts",
+    "Landscaped gardens",
+    "Children’s play area",
+    "Walking and reflexology tracks"
+  ],
+  "connectivity": [
+    "10 min to Hitech City",
+    "10 min to Cyber Towers",
+    "5 min to KPHB Colony metro station",
+    "5 min to Lulu Mall",
+    "7 min to JNTU metro station",
+    "40 min to Rajiv Gandhi International Airport"
+  ],
+  "developerNote": "Established in 1990, Godrej Properties is the first real estate company in India to have ISO certification, and is currently developing landmark projects across 15+ cities covering over 21.7 million square metres.",
+  "images": [
+    "assets/projects/godrej-brooklyn-avenue-01.webp",
+    "assets/projects/godrej-brooklyn-avenue-02.webp",
+    "assets/projects/godrej-brooklyn-avenue-03.webp",
+    "assets/projects/godrej-brooklyn-avenue-04.webp",
+    "assets/projects/godrej-brooklyn-avenue-05.webp",
+    "assets/projects/godrej-brooklyn-avenue-06.webp",
+    "assets/projects/godrej-brooklyn-avenue-07.webp",
+    "assets/projects/godrej-brooklyn-avenue-08.webp"
+  ],
+  "photoDescription": "Brooklyn-style towers at golden hour",
+  "locationKey": "hyderabad",
+  "localityKey": "hyd-kukatpally",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b1",
+    "b2"
+  ],
+  "purposes": [
+    "live"
+  ]
+}

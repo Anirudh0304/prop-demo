@@ -1,0 +1,53 @@
+{
+  "order": 360,
+  "id": "tvs-emerald-altura",
+  "developer": "TVS Emerald",
+  "name": "TVS Emerald Altura",
+  "location": "Bagalur, North Bengaluru",
+  "config": "2 & 3 BHK apartments",
+  "sizes": "1,100 – 2,123 sq.ft",
+  "tags": [
+    "Japandi design",
+    "EDGE-certified",
+    "Twin clubhouses"
+  ],
+  "description": "A Japandi-inspired gated community of about 975 homes across 12 towers on 10 acres near Bagalur, EDGE-certified for sustainability, with 71% open space, hundreds of trees, an in-campus temple, and a man-made water body.",
+  "curation": [
+    "Japandi design language across two clubhouses of 29,000+ sq.ft",
+    "EDGE green certification with 71% open space",
+    "Near Bagalur metro, Bhartiya City, and the airport corridor"
+  ],
+  "amenities": [
+    "Two Japandi clubhouses",
+    "Two pools and two gyms",
+    "Double-height badminton court",
+    "Pickleball court and golf simulator",
+    "Pilates studio",
+    "Sky cinema and mini theatre",
+    "Spa and salon",
+    "Rooftop cafes"
+  ],
+  "connectivity": [
+    "Near Bagalur metro",
+    "Near Bhartiya City and Manyata",
+    "About 20-30 min to the airport"
+  ],
+  "images": [
+    "assets/projects/tvs-emerald-altura-01.webp",
+    "assets/projects/tvs-emerald-altura-02.webp",
+    "assets/projects/tvs-emerald-altura-03.webp",
+    "assets/projects/tvs-emerald-altura-04.webp",
+    "assets/projects/tvs-emerald-altura-05.webp"
+  ],
+  "photoDescription": "Japandi facades over a podium water body",
+  "locationKey": "bengaluru",
+  "localityKey": "blr-bagalur",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b1"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

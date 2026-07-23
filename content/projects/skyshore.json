@@ -1,0 +1,56 @@
+{
+  "order": 140,
+  "id": "skyshore",
+  "developer": "Godrej Properties",
+  "name": "Skyshore",
+  "location": "Versova, Mumbai",
+  "possession": "December 2029 onwards",
+  "config": "3, 4 BHK & duplexes",
+  "sizes": "1,500 – 2,646 sq.ft carpet",
+  "tags": [
+    "Sea-facing",
+    "3 homes per floor",
+    "Rooftop infinity pool"
+  ],
+  "description": "Skyshore is an ultra-luxury, low-density seafront project in Versova with two iconic wings and only three apartments per floor, offering 3 & 4 BHK and duplex residences with private decks and panoramic Arabian Sea and skyline views.",
+  "curation": [
+    "Only three residences per floor across about 130 exclusive homes",
+    "Private decks with panoramic Arabian Sea and skyline views",
+    "About 850 m from Versova metro, near the upcoming Coastal Road link"
+  ],
+  "amenities": [
+    "Rooftop infinity pool and jacuzzi",
+    "Squash, padel, and badminton courts",
+    "Gymnasium and clubhouse",
+    "Sky lounge and library",
+    "Themed gardens and hammock lounge",
+    "Yoga and meditation zones"
+  ],
+  "connectivity": [
+    "About 850 m to Versova metro station",
+    "Near Versova Beach",
+    "Near Kokilaben Hospital and Infiniti Mall",
+    "Upcoming Bandra-Versova Coastal Road link"
+  ],
+  "developerNote": "Established in 1990, Godrej Properties is the first real estate company in India to have ISO certification, and is currently developing landmark projects across 15+ cities covering over 21.7 million square metres.",
+  "images": [
+    "assets/projects/skyshore-01.webp",
+    "assets/projects/skyshore-02.webp",
+    "assets/projects/skyshore-03.webp",
+    "assets/projects/skyshore-04.webp",
+    "assets/projects/skyshore-05.webp"
+  ],
+  "photoDescription": "Sea-facing towers with twilight pool deck",
+  "locationKey": "mumbai",
+  "localityKey": "mum-versova",
+  "nearbyKeys": [
+    "navimumbai"
+  ],
+  "budgetBands": [
+    "b3"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

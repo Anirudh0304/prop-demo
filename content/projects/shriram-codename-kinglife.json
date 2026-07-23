@@ -1,0 +1,55 @@
+{
+  "order": 280,
+  "id": "shriram-codename-kinglife",
+  "developer": "Shriram Properties",
+  "name": "Shriram Codename Kinglife",
+  "location": "Koyambedu, Chennai",
+  "possession": "By 2030",
+  "config": "3 & 4 BHK apartments",
+  "sizes": "1,465 – 2,835 sq.ft",
+  "tags": [
+    "135 residences",
+    "Koyambedu address",
+    "Two-floor clubhouse"
+  ],
+  "description": "A boutique luxury high-rise of just 135 premium residences on about 2 acres in Koyambedu, central Chennai, close to the metro and CMBT, with servant-room options in the larger homes.",
+  "curation": [
+    "An exclusive community of only 135 homes",
+    "Prime Koyambedu address near the metro and CMBT",
+    "A 15,000 sq.ft clubhouse across two floors"
+  ],
+  "amenities": [
+    "15,000 sq.ft two-floor clubhouse",
+    "Swimming pool",
+    "Gymnasium",
+    "Yoga room",
+    "Indoor games",
+    "Landscaped gardens",
+    "Children play area",
+    "High-speed lifts"
+  ],
+  "connectivity": [
+    "Close to Koyambedu metro",
+    "Near the CMBT bus terminus",
+    "On the Poonamallee High Road and Inner Ring Road axis"
+  ],
+  "images": [
+    "assets/projects/shriram-codename-kinglife-01.webp",
+    "assets/projects/shriram-codename-kinglife-02.webp",
+    "assets/projects/shriram-codename-kinglife-03.webp",
+    "assets/projects/shriram-codename-kinglife-04.webp",
+    "assets/projects/shriram-codename-kinglife-05.webp"
+  ],
+  "photoDescription": "Boutique high-rise with amenity deck",
+  "locationKey": "chennai",
+  "localityKey": "che-koyambedu",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b1",
+    "b2"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}

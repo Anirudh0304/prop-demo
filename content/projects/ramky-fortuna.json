@@ -1,0 +1,55 @@
+{
+  "order": 270,
+  "id": "ramky-fortuna",
+  "developer": "Ramky Group",
+  "name": "Ramky Fortuna",
+  "location": "Whitefield, Bengaluru",
+  "status": "Under construction",
+  "possession": "March 2027",
+  "config": "1, 2, 2.5 & 3 BHK apartments",
+  "sizes": "Carpet 455 – 1,610 sq.ft",
+  "tags": [
+    "80% open space",
+    "Near Kadugodi metro",
+    "Olympic-size pool"
+  ],
+  "description": "A premium township of 11 towers near Kadugodi in Whitefield with more than 80% open space, about 74% carpet efficiency, and a 50,000 sq.ft clubhouse with an Olympic-sized pool and water park.",
+  "curation": [
+    "About 74% carpet efficiency, unusually high for the corridor",
+    "A 50,000 sq.ft clubhouse with an Olympic-sized pool",
+    "Near Kadugodi metro, ITPL, and Hope Farm Junction"
+  ],
+  "amenities": [
+    "50,000 sq.ft clubhouse",
+    "Olympic-sized pool with water park",
+    "Gymnasium",
+    "Mini theatre and amphitheatre",
+    "Skating rink",
+    "Library",
+    "Yoga spaces",
+    "Concierge services"
+  ],
+  "connectivity": [
+    "Near Kadugodi metro station",
+    "Near ITPL and Hope Farm Junction",
+    "Quick reach to the Outer Ring Road"
+  ],
+  "images": [
+    "assets/projects/ramky-fortuna-01.webp",
+    "assets/projects/ramky-fortuna-02.webp",
+    "assets/projects/ramky-fortuna-03.webp",
+    "assets/projects/ramky-fortuna-04.webp",
+    "assets/projects/ramky-fortuna-05.webp"
+  ],
+  "photoDescription": "Township entrance with podium gardens",
+  "locationKey": "bengaluru",
+  "localityKey": "blr-whitefield",
+  "nearbyKeys": [],
+  "budgetBands": [
+    "b1"
+  ],
+  "purposes": [
+    "live",
+    "invest"
+  ]
+}
