@@ -9,8 +9,8 @@
 (function () {
   'use strict';
 
-  var PROPS_KEY = 'propstar_properties_v3';
-  var QUIZ_KEY = 'propstar_quiz_v4';
+  var PROPS_KEY = 'propstar_properties_v4';
+  var QUIZ_KEY = 'propstar_quiz_v5';
 
   /* ---------- helpers ---------- */
 
@@ -40,28 +40,46 @@
           { key: 'blr-yelahanka',    label: 'Yelahanka' },
           { key: 'blr-sarjapur',     label: 'Sarjapur Road' },
           { key: 'blr-bannerghatta', label: 'Bannerghatta Road' },
-          { key: 'blr-devanahalli',  label: 'Devanahalli' }
+          { key: 'blr-devanahalli',  label: 'Devanahalli' },
+          { key: 'blr-whitefield',   label: 'Whitefield' },
+          { key: 'blr-north',        label: 'North Bengaluru' },
+          { key: 'blr-bagalur',      label: 'Bagalur' },
+          { key: 'blr-chandapura',   label: 'Chandapura-Anekal' },
+          { key: 'blr-rrnagar',      label: 'Rajarajeshwari Nagar' }
         ]},
         { key: 'mumbai', label: 'Mumbai', hint: 'The maximum city', localities: [
           { key: 'mum-wadala',  label: 'Wadala' },
           { key: 'mum-worli',   label: 'Worli' },
-          { key: 'mum-versova', label: 'Versova' }
+          { key: 'mum-versova', label: 'Versova' },
+          { key: 'mum-parel',   label: 'Parel' }
         ]},
         { key: 'navimumbai', label: 'Navi Mumbai', hint: 'The planned city, near NMIA', localities: [
           { key: 'nvm-kharghar', label: 'Kharghar' }
         ]},
-        { key: 'pune', label: 'Pune', hint: 'The eastern IT corridor', localities: [
-          { key: 'pun-kharadi', label: 'Kharadi' }
+        { key: 'pune', label: 'Pune', hint: 'The IT and hillside corridors', localities: [
+          { key: 'pun-kharadi', label: 'Kharadi' },
+          { key: 'pun-kothrud', label: 'Kothrud' }
         ]},
-        { key: 'hyderabad', label: 'Hyderabad', hint: 'KPHB & Hitech City', localities: [
-          { key: 'hyd-kukatpally', label: 'Kukatpally' }
+        { key: 'hyderabad', label: 'Hyderabad', hint: 'KPHB to the Financial District', localities: [
+          { key: 'hyd-kukatpally', label: 'Kukatpally' },
+          { key: 'hyd-tellapur',   label: 'Tellapur' }
         ]},
         { key: 'ncr', label: 'Delhi NCR', hint: 'Noida, Greater Noida & Gurugram', localities: [
           { key: 'ncr-sigma3',     label: 'Sigma III, Greater Noida' },
           { key: 'ncr-sec44',      label: 'Sector 44, Noida' },
           { key: 'ncr-sohna',      label: 'Sohna Road, Gurugram' },
-          { key: 'ncr-golfcourse', label: 'Golf Course Road, Gurugram' }
-        ]}
+          { key: 'ncr-golfcourse', label: 'Golf Course Road, Gurugram' },
+          { key: 'ncr-dwarka',     label: 'Dwarka Expressway, Gurugram' }
+        ]},
+        { key: 'chennai', label: 'Chennai', hint: 'The southern gateway', localities: [
+          { key: 'che-koyambedu', label: 'Koyambedu' },
+          { key: 'che-omr',       label: 'OMR corridor' }
+        ]},
+        { key: 'kerala', label: 'Kerala', hint: 'Kochi & Kozhikode', localities: [
+          { key: 'ker-kochi',     label: 'Kochi' },
+          { key: 'ker-kozhikode', label: 'Kozhikode' }
+        ]},
+        { key: 'giftcity', label: 'GIFT City', hint: 'India\'s first smart city', localities: [] }
       ],
       budgets: [                       /* order matters — adjacency scoring */
         { key: 'b1', label: '₹1 – 3 Cr' },
@@ -375,6 +393,481 @@
         photoDescription: 'Twin towers above a landscaped entrance',
         locationKey: 'bengaluru', localityKey: 'blr-sarjapur', nearbyKeys: [],
         budgetBands: ['b1'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'bhavisha-bilva',
+        developer: 'Bhavisha Properties', name: 'Bhavisha Bilva', location: 'Sarjapur Road, Bengaluru',
+        possession: 'From December 2025', config: '2, 3 & 4 BHK, plus duplexes in Bilva II',
+        sizes: '1,087 – 1,410 sq.ft',
+        tags: ['Boutique low-rise', 'Vastu-aligned', 'Sarjapur Road'],
+        description: 'Two phases named after the sacred Bilva tree: the original Bhavisha Bilva, a boutique low-rise of about 32 homes, and Bilva II, a single landmark tower of 33 floors with luxury 3 and 4 BHK duplex residences, both Vastu-aligned on Sarjapur Road.',
+        curation: [
+          'A boutique community rather than a mega-township, with about 32 homes in the original phase',
+          'Bilva II adds a landmark 33-floor tower of duplex residences',
+          'Near Oakridge International School, Manipal Hospital, and Azim Premji University'
+        ],
+        amenities: ['Clubhouse', 'Swimming pool and kids pool', 'Indoor and outdoor gym', 'Squash court and cricket pitch', 'Mini golf and billiards', 'Party hall', 'EV charging stations', 'Landscaped parks'],
+        connectivity: ['On Sarjapur Road, near Oakridge International School', 'Near Manipal Hospital and Azim Premji University', 'Strong connectivity to the airport and IT hubs'],
+        images: ['assets/projects/bhavisha-bilva-01.webp', 'assets/projects/bhavisha-bilva-02.webp', 'assets/projects/bhavisha-bilva-03.webp', 'assets/projects/bhavisha-bilva-04.webp', 'assets/projects/bhavisha-bilva-05.webp', 'assets/projects/bhavisha-bilva-06.webp', 'assets/projects/bhavisha-bilva-07.webp', 'assets/projects/bhavisha-bilva-08.webp'],
+        photoDescription: 'Boutique tower above a landscaped entrance',
+        locationKey: 'bengaluru', localityKey: 'blr-sarjapur', nearbyKeys: [],
+        budgetBands: ['b1'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'ceyone-buildiko-spring-woods',
+        developer: 'Buildiko Ventures', name: 'Ceyone Buildiko Spring Woods', location: 'Sarjapur Road, Bengaluru',
+        config: '4 BHK triplex courtyard villas',
+        sizes: '2,655 – 3,389 sq.ft',
+        tags: ['Courtyard villas', 'Living Street concept', 'Up to 5 gardens'],
+        description: 'A low-density gated community of 103 four-bedroom triplex courtyard villas on 6.75 acres, built around Bangalore’s first Living Street concept for walkable community living. Each villa has a flexible recreation room and up to five private garden spaces, from courtyard to rooftop.',
+        curation: [
+          'Only 103 villas on 6.75 acres, with a walkable Living Street plan',
+          'Up to five private garden spaces per villa, including a sky deck and rooftop',
+          'About 5-10 minutes from the proposed Sarjapur Pink Line metro'
+        ],
+        amenities: ['Clubhouse', 'Indoor theatre', 'Indoor badminton and tennis courts', 'Gymnasium', 'Terrace gardens', 'Kids play area', 'Party hall', 'Jogging-friendly living streets'],
+        connectivity: ['5-10 min to the proposed Sarjapur metro', 'Near Wipro and Infosys campuses', 'Near Azim Premji University and DPS'],
+        images: ['assets/projects/ceyone-buildiko-spring-woods-01.webp', 'assets/projects/ceyone-buildiko-spring-woods-02.webp', 'assets/projects/ceyone-buildiko-spring-woods-03.webp', 'assets/projects/ceyone-buildiko-spring-woods-04.webp', 'assets/projects/ceyone-buildiko-spring-woods-05.webp'],
+        photoDescription: 'Courtyard villas along a landscaped street',
+        locationKey: 'bengaluru', localityKey: 'blr-sarjapur', nearbyKeys: [],
+        budgetBands: ['b1', 'b2'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'ceyone-echoes-of-eden',
+        developer: 'Sumo Group (Ceyone)', name: 'Ceyone Echoes of Eden', location: 'North Bengaluru',
+        config: '3, 3.5 & 4 BHK villaments, duplexes & penthouses',
+        sizes: '2,835 – 4,266 sq.ft built-up',
+        tags: ['57 exclusive homes', 'Private courtyards', 'Indo-European design'],
+        description: 'An ultra-luxury boutique villament community of just 57 homes on about 2 acres in North Bengaluru: ground-plus-one duplex villaments with backyard gardens and private pools, mid-level duplexes with internal courtyards, and sky villas on the top floor, in an Indo-European design.',
+        curation: [
+          'Just 57 residences across three low-density blocks',
+          'Private courtyards for nearly every home, and private pools for select duplexes',
+          'About 5 minutes from Airport Road, before the toll'
+        ],
+        amenities: ['Clubhouse with gym and multipurpose hall', 'Rooftop infinity pools', 'Private plunge pools (select homes)', 'Terrace cafeteria', 'Yoga deck', 'Sensory park and elders park', 'Kids play area', 'Reflexology path'],
+        connectivity: ['About 5 min from Airport Road', 'Quick reach to North Bengaluru tech corridors'],
+        images: ['assets/projects/ceyone-echoes-of-eden-01.webp', 'assets/projects/ceyone-echoes-of-eden-02.webp', 'assets/projects/ceyone-echoes-of-eden-03.webp', 'assets/projects/ceyone-echoes-of-eden-04.webp', 'assets/projects/ceyone-echoes-of-eden-05.webp'],
+        photoDescription: 'Indo-European courtyard facades',
+        locationKey: 'bengaluru', localityKey: 'blr-north', nearbyKeys: [],
+        budgetBands: ['b2'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'ceyone-oxyrich',
+        developer: 'Beautiful Boundaries', name: 'Ceyone Oxyrich', location: 'Chandapura-Anekal, Bengaluru',
+        config: '3 & 4 BHK villas',
+        sizes: '2,070 – 4,126 sq.ft',
+        tags: ['Mediterranean villas', 'Sky decks', 'Near Electronic City'],
+        description: 'A Mediterranean-inspired gated villa community of about 134 villas on 8 acres near Chandapura, with skylit kitchens, mezzanine lounges, open-to-sky showers, and private terrace gardens, finished with imported cladding brick.',
+        curation: [
+          'Design-forward villas: skylit kitchens, mezzanine lounges, and sky decks',
+          'Multi-layered privacy separating bedrooms from living zones',
+          'About 20 minutes from Bommasandra metro and the Electronic City belt'
+        ],
+        amenities: ['Clubhouse', 'Amphitheatre', 'Landscaped open spaces', 'Children play area', 'Wide concrete internal roads', 'Sports and recreation amenities', '24-hour water and power backup'],
+        connectivity: ['15 min to Chandapura Junction', '20 min to Bommasandra metro', 'Near Electronic City, Jigani, and Hosur Road'],
+        images: ['assets/projects/ceyone-oxyrich-01.webp', 'assets/projects/ceyone-oxyrich-02.webp', 'assets/projects/ceyone-oxyrich-03.webp', 'assets/projects/ceyone-oxyrich-04.webp', 'assets/projects/ceyone-oxyrich-05.webp'],
+        photoDescription: 'Mediterranean villa exterior',
+        locationKey: 'bengaluru', localityKey: 'blr-chandapura', nearbyKeys: [],
+        budgetBands: ['b1', 'b2'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'ceyone-urban-retreat',
+        developer: 'Sri Balaji (Ceyone)', name: 'Ceyone Urban Retreat', location: 'Sarjapur Road, Bengaluru',
+        config: '4 BHK villas',
+        sizes: '2,975 – 3,800 sq.ft built-up',
+        tags: ['96 smart villas', 'Home automation', 'Opposite Azim Premji University'],
+        description: 'A smart, home-automated gated community of 96 exclusive 4 BHK villas on about 7 acres opposite Azim Premji University, with central green courtyards, private sit-out gardens, terrace gazebos, and water features throughout.',
+        curation: [
+          'Home automation as standard across all 96 villas',
+          'Central and back courtyards bring light and ventilation into every home',
+          'Opposite Azim Premji University, about 100 m from the proposed Infosys campus'
+        ],
+        amenities: ['Clubhouse', 'Swimming pool', 'Fitness centre', 'Basketball court', 'Jogging and cycling tracks', 'Multipurpose hall', 'Landscaped gardens and water features', 'Convenience store'],
+        connectivity: ['Opposite Azim Premji University', 'About 2.2 km from the proposed Sarjapur metro', '5 min from the Sarjapur-Attibele main road'],
+        images: ['assets/projects/ceyone-urban-retreat-01.webp', 'assets/projects/ceyone-urban-retreat-02.webp', 'assets/projects/ceyone-urban-retreat-03.webp', 'assets/projects/ceyone-urban-retreat-04.webp', 'assets/projects/ceyone-urban-retreat-05.webp'],
+        photoDescription: 'Contemporary villa with private garden',
+        locationKey: 'bengaluru', localityKey: 'blr-sarjapur', nearbyKeys: [],
+        budgetBands: ['b1', 'b2'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'mana-jardin',
+        developer: 'Mana Projects', name: 'Mana Jardin', location: 'Kodathi, Sarjapur Road, Bengaluru',
+        possession: 'Original ready, Jardin Neo about 2032', config: '2 & 3 BHK, plus 3 to 5 BHK in Jardin Neo',
+        sizes: '1,217 – 1,845 sq.ft; Neo carpet 1,897 – 2,309 sq.ft',
+        tags: ['Ready original phase', 'Ultra-luxury Neo towers', 'Lake views'],
+        description: 'Two offerings under the Jardin name: the original ready-to-move low-rise community of 2 and 3 BHK homes, and Mana Jardin Neo, two 20-floor towers with only about 80 penthouse-style residences with lake views at Kodathi.',
+        curation: [
+          'The original phase is ready to move into today',
+          'Jardin Neo holds only about 80 penthouse-style homes across two towers',
+          'Kodathi address near the Wipro SEZ and RGA Tech Park'
+        ],
+        amenities: ['Clubhouse with swimming pool', 'Gymnasium', 'Basketball court', 'Leisure gardens', 'Amphitheatre', 'Creche and day care', 'Jogging tracks', 'Covered parking'],
+        connectivity: ['Near Wipro SEZ and RGA Tech Park', 'Near Carmelaram railway station', 'Quick reach to the Outer Ring Road'],
+        images: ['assets/projects/mana-jardin-01.webp', 'assets/projects/mana-jardin-02.webp', 'assets/projects/mana-jardin-03.webp', 'assets/projects/mana-jardin-04.webp', 'assets/projects/mana-jardin-05.webp'],
+        photoDescription: 'Garden towers above a podium landscape',
+        locationKey: 'bengaluru', localityKey: 'blr-sarjapur', nearbyKeys: [],
+        budgetBands: ['b1', 'b2', 'b3'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'mana-trl',
+        developer: 'Mana Projects', name: 'Mana TRL', location: 'Sarjapur Road, Bengaluru',
+        config: '2, 3, 3.5 & 4 BHK apartments',
+        sizes: '760 – 2,852 sq.ft',
+        tags: ['Child-centric township', '84% open space', 'Lakeside living'],
+        description: 'Bengaluru’s largest child-centric integrated township across 100+ acres beside Inventure Academy, with 84% open space, a lake-centric landscape, and vehicle-free pedestrian zones. Phase 1 spans about 31 acres of towers rising to 35 floors.',
+        curation: [
+          'Planned around children: vehicle-free pathways, learning zones, and play parks',
+          '84% open space with a lakeside landscape',
+          'Next to Inventure Academy, near the Wipro SEZ'
+        ],
+        amenities: ['45,000+ sq.ft clubhouse with co-working', 'Multiple clubhouses and pools', 'Tennis, basketball, and cricket courts', 'Kids learning zones and play parks', 'Yoga decks and meditation zones', 'Amphitheatre', 'High-street retail'],
+        connectivity: ['Next to Inventure Academy', 'Near Wipro SEZ and Carmelaram', 'Quick reach to the Outer Ring Road'],
+        images: ['assets/projects/mana-trl-01.webp', 'assets/projects/mana-trl-02.webp', 'assets/projects/mana-trl-03.webp', 'assets/projects/mana-trl-04.webp', 'assets/projects/mana-trl-05.webp'],
+        photoDescription: 'Township towers over a lakeside landscape',
+        locationKey: 'bengaluru', localityKey: 'blr-sarjapur', nearbyKeys: [],
+        budgetBands: ['b1'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'mana-verdant',
+        developer: 'Mana Projects', name: 'Mana Verdant', location: 'Jakkur, North Bengaluru',
+        status: 'Under construction', possession: 'December 2030', config: '2 & 3 BHK apartments',
+        sizes: '700 – 1,283 sq.ft',
+        tags: ['Jakkur Lake views', 'Landscaped balconies', 'Near Manyata'],
+        description: 'A premium enclave of about 484 homes on nearly 5 acres near Jakkur Lake, with landscaped balconies and lake views from the tallest tower in the vicinity, minutes off Bellary Road in North Bengaluru.',
+        curation: [
+          'Lake-view living beside Jakkur Lake',
+          'Landscaped private balconies as a design signature',
+          '0.2 km from Bellary Road, near Manyata Tech Park and the airport corridor'
+        ],
+        amenities: ['Clubhouse', 'Swimming pool', 'Gymnasium', 'Tennis and cricket courts', 'Reading room', 'Amphitheatre', 'Community hall', 'Children play area'],
+        connectivity: ['0.2 km to Bellary Road', 'Near Yelahanka and Manyata Tech Park', 'Near Nagawara metro and the airport'],
+        images: ['assets/projects/mana-verdant-01.webp', 'assets/projects/mana-verdant-02.webp', 'assets/projects/mana-verdant-03.webp', 'assets/projects/mana-verdant-04.webp', 'assets/projects/mana-verdant-05.webp'],
+        photoDescription: 'Tall tower with landscaped balconies',
+        locationKey: 'bengaluru', localityKey: 'blr-north', nearbyKeys: [],
+        budgetBands: ['b1'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'prestige-eden-garden',
+        developer: 'Prestige Group', name: 'Prestige Eden Garden', location: 'Kalamassery, Kochi',
+        status: 'Under construction', possession: 'December 2026', config: '2, 3 & 4 BHK apartments',
+        sizes: '1,495 – 2,771 sq.ft',
+        tags: ['Single boutique tower', '112 homes', 'Near Kochi metro'],
+        description: 'A boutique single-tower project of 112 residences over 20 floors near Kalamassery metro in Kochi, with more than 75% open space and Prestige’s five-tier security with a command centre.',
+        curation: [
+          'Only 112 homes in a single 20-floor tower',
+          'More than 75% of the site left open',
+          'Near Kalamassery metro, CUSAT, and the NH-544 and NH-66 corridors'
+        ],
+        amenities: ['Clubhouse', 'Indoor swimming pool', 'Gymnasium and spa', 'Mini theatre', 'Badminton court', 'Meditation hall', 'Amphitheatre', 'Landscaped lawns'],
+        connectivity: ['Near Kalamassery metro and CUSAT', 'On the NH-544 and NH-66 corridors', 'About 16 km to Cochin International Airport'],
+        images: ['assets/projects/prestige-eden-garden-01.webp', 'assets/projects/prestige-eden-garden-02.webp', 'assets/projects/prestige-eden-garden-03.webp', 'assets/projects/prestige-eden-garden-04.webp', 'assets/projects/prestige-eden-garden-05.webp'],
+        photoDescription: 'Boutique tower amid Kochi greens',
+        locationKey: 'kerala', localityKey: 'ker-kochi', nearbyKeys: [],
+        budgetBands: ['b1'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'prestige-golden-grove',
+        developer: 'Prestige Group', name: 'Prestige Golden Grove', location: 'Tellapur, Hyderabad',
+        status: 'Under construction', possession: 'April 2031', config: '2, 3 & 4 BHK sky villaments',
+        sizes: '1,169 – 3,013 sq.ft',
+        tags: ['Forest-themed township', '11-acre central park', 'ICRISAT green buffer'],
+        description: 'A forest-themed township of about 29 acres in Tellapur with towers rising past 50 floors, an 11-acre central park, about 80% open space, and a border along the 3,500-acre ICRISAT green buffer, 15 minutes from the Financial District.',
+        curation: [
+          'An 11-acre central park inside the community',
+          'Borders the 3,500-acre ICRISAT research campus greens',
+          'Two clubhouses totalling about 2.5 lakh sq.ft with 60+ amenities'
+        ],
+        amenities: ['Two clubhouses (about 2.5 lakh sq.ft)', 'Temperature-controlled pools and jacuzzi', 'Spa, salon, and yoga rooms', 'Sports courts', 'Creche and pet parks', 'Co-working lounges', 'Health centre and library', 'Dance studios and cafe'],
+        connectivity: ['15 min to the Financial District', 'Tellapur address on Hyderabad’s west corridor'],
+        images: ['assets/projects/prestige-golden-grove-01.webp', 'assets/projects/prestige-golden-grove-02.webp', 'assets/projects/prestige-golden-grove-03.webp', 'assets/projects/prestige-golden-grove-04.webp', 'assets/projects/prestige-golden-grove-05.webp'],
+        photoDescription: 'Township skyline over a forested park',
+        locationKey: 'hyderabad', localityKey: 'hyd-tellapur', nearbyKeys: [],
+        budgetBands: ['b1', 'b2'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'prestige-ocean-pearl',
+        developer: 'Prestige Group', name: 'Prestige Ocean Pearl', location: 'Kozhikode',
+        status: 'Under construction', possession: '2026-2027', config: '3 & 4 BHK apartments',
+        sizes: '1,750 – 3,239 sq.ft',
+        tags: ['Beachfront living', 'Arabian Sea frontage', 'Sea-facing clubhouse'],
+        description: 'A luxury beachfront project on 6.5 acres with direct Arabian Sea frontage in Kozhikode: 530 homes across four towers elevated on a four-level deck for sea views, with every home given at least two open faces for cross-ventilation.',
+        curation: [
+          'Direct beachfront: the site fronts the Arabian Sea',
+          'Homes elevated on a four-level deck so sea views start high',
+          'Every residence has two or more external faces for light and air'
+        ],
+        amenities: ['Sea-facing multi-floor clubhouse', 'Podium pool with kids pool and deck', 'Health club and spa', 'Badminton and squash courts', 'AV and music rooms', 'Library', 'Yoga room', 'Kids activity zones'],
+        connectivity: ['Near West Hill railway station', 'Near Meitra Hospital', 'About an hour to Calicut International Airport'],
+        images: ['assets/projects/prestige-ocean-pearl-01.webp', 'assets/projects/prestige-ocean-pearl-02.webp', 'assets/projects/prestige-ocean-pearl-03.webp', 'assets/projects/prestige-ocean-pearl-04.webp', 'assets/projects/prestige-ocean-pearl-05.webp'],
+        photoDescription: 'Towers over the Arabian Sea shoreline',
+        locationKey: 'kerala', localityKey: 'ker-kozhikode', nearbyKeys: [],
+        budgetBands: ['b1'], purposes: ['live', 'second', 'invest']
+      },
+      {
+        id: 'ramky-fortuna',
+        developer: 'Ramky Group', name: 'Ramky Fortuna', location: 'Whitefield, Bengaluru',
+        status: 'Under construction', possession: 'March 2027', config: '1, 2, 2.5 & 3 BHK apartments',
+        sizes: 'Carpet 455 – 1,610 sq.ft',
+        tags: ['80% open space', 'Near Kadugodi metro', 'Olympic-size pool'],
+        description: 'A premium township of 11 towers near Kadugodi in Whitefield with more than 80% open space, about 74% carpet efficiency, and a 50,000 sq.ft clubhouse with an Olympic-sized pool and water park.',
+        curation: [
+          'About 74% carpet efficiency, unusually high for the corridor',
+          'A 50,000 sq.ft clubhouse with an Olympic-sized pool',
+          'Near Kadugodi metro, ITPL, and Hope Farm Junction'
+        ],
+        amenities: ['50,000 sq.ft clubhouse', 'Olympic-sized pool with water park', 'Gymnasium', 'Mini theatre and amphitheatre', 'Skating rink', 'Library', 'Yoga spaces', 'Concierge services'],
+        connectivity: ['Near Kadugodi metro station', 'Near ITPL and Hope Farm Junction', 'Quick reach to the Outer Ring Road'],
+        images: ['assets/projects/ramky-fortuna-01.webp', 'assets/projects/ramky-fortuna-02.webp', 'assets/projects/ramky-fortuna-03.webp', 'assets/projects/ramky-fortuna-04.webp', 'assets/projects/ramky-fortuna-05.webp'],
+        photoDescription: 'Township entrance with podium gardens',
+        locationKey: 'bengaluru', localityKey: 'blr-whitefield', nearbyKeys: [],
+        budgetBands: ['b1'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'shriram-codename-kinglife',
+        developer: 'Shriram Properties', name: 'Shriram Codename Kinglife', location: 'Koyambedu, Chennai',
+        possession: 'By 2030', config: '3 & 4 BHK apartments',
+        sizes: '1,465 – 2,835 sq.ft',
+        tags: ['135 residences', 'Koyambedu address', 'Two-floor clubhouse'],
+        description: 'A boutique luxury high-rise of just 135 premium residences on about 2 acres in Koyambedu, central Chennai, close to the metro and CMBT, with servant-room options in the larger homes.',
+        curation: [
+          'An exclusive community of only 135 homes',
+          'Prime Koyambedu address near the metro and CMBT',
+          'A 15,000 sq.ft clubhouse across two floors'
+        ],
+        amenities: ['15,000 sq.ft two-floor clubhouse', 'Swimming pool', 'Gymnasium', 'Yoga room', 'Indoor games', 'Landscaped gardens', 'Children play area', 'High-speed lifts'],
+        connectivity: ['Close to Koyambedu metro', 'Near the CMBT bus terminus', 'On the Poonamallee High Road and Inner Ring Road axis'],
+        images: ['assets/projects/shriram-codename-kinglife-01.webp', 'assets/projects/shriram-codename-kinglife-02.webp', 'assets/projects/shriram-codename-kinglife-03.webp', 'assets/projects/shriram-codename-kinglife-04.webp', 'assets/projects/shriram-codename-kinglife-05.webp'],
+        photoDescription: 'Boutique high-rise with amenity deck',
+        locationKey: 'chennai', localityKey: 'che-koyambedu', nearbyKeys: [],
+        budgetBands: ['b1', 'b2'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'sobha-altus',
+        developer: 'Sobha Limited', name: 'Sobha Altus', location: 'Dwarka Expressway, Gurugram',
+        config: '3, 4 & 5 BHK, plus studio residences',
+        sizes: '677 – 4,077 sq.ft',
+        tags: ['Parametric Wave design', 'Club Waverly', 'Near IGI Airport'],
+        description: 'An ultra-luxury community on the Dwarka Expressway with a distinctive fluid parametric Wave design: about 290 residences across three towers, minimal shared walls, no directly-facing units, and IGBC-rated wrap-around landscaping.',
+        curation: [
+          'Sculptural parametric architecture by international designers',
+          'Minimal shared walls and no directly-facing homes',
+          'The Club Waverly: about 46,000 sq.ft of clubhouse with 30+ services'
+        ],
+        amenities: ['Club Waverly (about 46,000 sq.ft)', 'Temperature-controlled indoor pool', 'Infinity sky pools', 'Business lounge and co-working', 'Guest suites and cafe', 'Zen park and BBQ deck', 'Reflexology zone', 'Rooftop lounge'],
+        connectivity: ['On the Dwarka Expressway', 'About 10-15 min to IGI Airport and Aerocity', 'Metro within 500 m', 'Quick access to NH-48'],
+        images: ['assets/projects/sobha-altus-01.webp', 'assets/projects/sobha-altus-02.webp', 'assets/projects/sobha-altus-03.webp', 'assets/projects/sobha-altus-04.webp', 'assets/projects/sobha-altus-05.webp'],
+        photoDescription: 'Wave-form towers at dusk',
+        locationKey: 'ncr', localityKey: 'ncr-dwarka', nearbyKeys: [],
+        budgetBands: ['b1', 'b2', 'b3'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'sobha-elysia',
+        developer: 'Sobha Limited', name: 'Sobha Elysia', location: 'GIFT City',
+        status: 'Under construction', possession: 'December 2030', config: '3 & 4 BHK apartments',
+        sizes: '999 – 3,462 sq.ft',
+        tags: ['GIFT City address', 'Sky lounge', '35+ amenities'],
+        description: 'A luxury project inside GIFT City, India’s first operational smart city: two towers of about 35 storeys with an 18th-floor sky lounge, an infinity pool, and a modern international facade, minutes from the GIFT City metro.',
+        curation: [
+          'An address inside India’s first operational smart city',
+          'Sky lounge and sky garden on the 18th floor',
+          'About 35 minutes from the planned bullet-train terminus'
+        ],
+        amenities: ['20,000 sq.ft clubhouse', 'Sky lounge on the 18th floor', 'Lap and infinity pools with kids pool', 'Fitness terrace', 'Mini theatre', 'Badminton court', 'Serenity cove and reflexology walk', 'Celebration lawn'],
+        connectivity: ['Near GIFT City metro', 'On the NH-8 and SP Ring Road axis', 'About 20 km to Ahmedabad airport'],
+        images: ['assets/projects/sobha-elysia-01.webp', 'assets/projects/sobha-elysia-02.webp', 'assets/projects/sobha-elysia-03.webp', 'assets/projects/sobha-elysia-04.webp', 'assets/projects/sobha-elysia-05.webp'],
+        photoDescription: 'Twin towers on the GIFT City skyline',
+        locationKey: 'giftcity', localityKey: '', nearbyKeys: [],
+        budgetBands: ['b1', 'b2'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'sobha-inizio',
+        developer: 'Sobha Limited', name: 'Sobha Inizio', location: 'Parel, Mumbai',
+        possession: 'March 2034', config: '1, 2 & 3 BHK apartments',
+        sizes: 'Carpet 498 – 1,224 sq.ft',
+        tags: ['64-storey icon', '3 homes per floor', 'Sky Club'],
+        description: 'An ultra-luxury single tower of about 64 storeys in central Parel with only three residences per floor, homes elevated above the 10th level over stilt parking, and a Sky Club spanning the 63rd and 64th floors.',
+        curation: [
+          'Only three residences per floor across about 310 homes',
+          'A Sky Club on the 63rd and 64th floors with an infinity terrace pool',
+          'Central Parel, minutes from Lower Parel, Worli, and BKC'
+        ],
+        amenities: ['Sky Club on floors 63-64', 'Infinity terrace pool with skyline views', 'Observation deck and sky lounge', 'Tennis and pickleball courts', 'Grand podium clubhouse', 'Creche', 'Cabanas', 'Reflexology walk'],
+        connectivity: ['Parel, near Lower Parel and Worli', 'Access via the Eastern Freeway and Atal Setu', 'Quick reach to BKC'],
+        images: ['assets/projects/sobha-inizio-01.webp', 'assets/projects/sobha-inizio-02.webp', 'assets/projects/sobha-inizio-03.webp', 'assets/projects/sobha-inizio-04.webp', 'assets/projects/sobha-inizio-05.webp'],
+        photoDescription: 'Slender tower over central Mumbai',
+        locationKey: 'mumbai', localityKey: 'mum-parel', nearbyKeys: ['navimumbai'],
+        budgetBands: ['b2', 'b3'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'sobha-nesara',
+        developer: 'Sobha Limited', name: 'Sobha Nesara', location: 'Kothrud, Pune',
+        status: 'Under construction', possession: 'Phased, 2026-2027', config: '3, 3.5, 4 & 4.5 BHK, plus duplexes',
+        sizes: 'Carpet 1,449 – 2,846 sq.ft',
+        tags: ['NDA Hills foothills', 'Panoramic hill views', 'Pune’s largest pool'],
+        description: 'An ultra-premium hillside project of about 290 residences across three towers at the foothills of the NDA Hills in Kothrud, with panoramic hill views, about 58,000 sq.ft of amenities, and air noticeably cooler than the city centre.',
+        curation: [
+          'Hillside setting at the NDA Hills foothills, about 3 degrees cooler than the city',
+          'Pune’s largest residential swimming pool',
+          'Kothrud address near Chandani Chowk and the Mumbai-Pune Expressway'
+        ],
+        amenities: ['Pune’s largest residential pool', 'Clubhouse and gymnasium', 'Spa and yoga room', 'Sensory garden', 'Activity lawns', 'Senior citizen zone', 'EV charging', 'Sundeck seating'],
+        connectivity: ['Kothrud, near Chandani Chowk', 'Off the Mumbai-Pune Expressway', 'Near Bavdhan and Lohia Jain IT Park', 'About 15 km to Pune airport'],
+        images: ['assets/projects/sobha-nesara-01.webp', 'assets/projects/sobha-nesara-02.webp', 'assets/projects/sobha-nesara-03.webp', 'assets/projects/sobha-nesara-04.webp', 'assets/projects/sobha-nesara-05.webp'],
+        photoDescription: 'Hillside towers with double-height lobby',
+        locationKey: 'pune', localityKey: 'pun-kothrud', nearbyKeys: [],
+        budgetBands: ['b1', 'b2'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'sumadhura-edition',
+        developer: 'Sumadhura Infra', name: 'Sumadhura Edition', location: 'Whitefield, Bengaluru',
+        config: '2, 3 & 4 BHK apartments',
+        sizes: '1,280 – 2,295 sq.ft',
+        tags: ['British-manor theme', '16 themed gardens', '150+ amenities'],
+        description: 'A flagship British-manor-themed township of about 20 acres near ITPL in Whitefield, with around 1,600 homes, 76% open space, 16 themed gardens, and a 66,000 sq.ft colonial-style clubhouse with a two-level arrival lobby.',
+        curation: [
+          'British classical architecture with colonnades and formal symmetry',
+          '16 themed gardens across more than 76% open space',
+          'Near ITPL, Brigade Tech Gardens, and the Whitefield metro corridor'
+        ],
+        amenities: ['66,000 sq.ft British-inspired clubhouse', 'Olympic-size pool plus rooftop pool', 'Gymnasium and yoga studio', 'Tennis and basketball courts', 'Co-working spaces and library', 'Mini theatre and amphitheatre', 'Cafeteria', '150+ amenities'],
+        connectivity: ['Near ITPL and Brookefield', 'About 3-4 km from Whitefield metro (Purple Line)', 'Near Prestige Tech Park and Nexus Whitefield'],
+        images: ['assets/projects/sumadhura-edition-01.webp', 'assets/projects/sumadhura-edition-02.webp', 'assets/projects/sumadhura-edition-03.webp', 'assets/projects/sumadhura-edition-04.webp', 'assets/projects/sumadhura-edition-05.webp'],
+        photoDescription: 'Manor-style towers over formal gardens',
+        locationKey: 'bengaluru', localityKey: 'blr-whitefield', nearbyKeys: [],
+        budgetBands: ['b1', 'b2'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'sumadhura-panorama',
+        developer: 'Sumadhura Group', name: 'Sumadhura Panorama', location: 'Devanahalli, Bengaluru',
+        possession: 'December 2027', config: 'Villa plots',
+        sizes: '1,200 – 4,000 sq.ft plots',
+        tags: ['Themed plotted community', '5 min from airport toll', '50+ amenities'],
+        description: 'A villa-plotted community of about 100 acres themed on five South Indian cultures, with six curated lifestyle zones and 539 plots in Phase 1, five minutes from the airport toll off Bellary Road.',
+        curation: [
+          'Six lifestyle zones themed on five South Indian states',
+          'About 5 minutes from the airport toll on NH-44',
+          'A 45,000 sq.ft clubhouse with 50+ amenities'
+        ],
+        amenities: ['45,000 sq.ft clubhouse', 'Swimming pool', 'Indoor and outdoor gyms', 'Indoor badminton', 'Sauna and steam', 'Skate park and campfire', 'Amphitheatre', 'Themed parks'],
+        connectivity: ['5 min from the airport toll', 'Off NH-44 Bellary Road', 'Asphalted 18 m, 12 m, and 9 m internal roads'],
+        images: ['assets/projects/sumadhura-panorama-01.webp', 'assets/projects/sumadhura-panorama-02.webp', 'assets/projects/sumadhura-panorama-03.webp', 'assets/projects/sumadhura-panorama-04.webp', 'assets/projects/sumadhura-panorama-05.webp'],
+        photoDescription: 'Plotted community entrance boulevard',
+        locationKey: 'bengaluru', localityKey: 'blr-devanahalli', nearbyKeys: [],
+        budgetBands: ['b1'], purposes: ['invest', 'second']
+      },
+      {
+        id: 'sumadhura-solace',
+        developer: 'Sumadhura Infra', name: 'Sumadhura Solace', location: 'Thubarahalli, Whitefield, Bengaluru',
+        status: 'Under construction', possession: 'December 2029', config: '3, 4 & 4.5 BHK apartments',
+        sizes: 'Carpet 1,194 – 3,297 sq.ft',
+        tags: ['Lakeside classical theme', 'No common walls', '90+ amenities'],
+        description: 'An ultra-luxury classical-themed lakeside project of about 770 homes on 11.6 acres at Thubarahalli, with 80% open space arranged along a tree-canopied central green spine and homes designed without common walls.',
+        curation: [
+          'No common walls between homes across the community',
+          'A tree-canopied central green spine through 80% open space',
+          'On the Varthur Road corridor near Marathahalli and ITPL'
+        ],
+        amenities: ['40,000 sq.ft clubhouse', 'Swimming pool and spa', 'Tennis, basketball, and badminton courts', 'Health centre', 'Creche', 'Mini theatre', 'Curated gardens', '90+ amenities'],
+        connectivity: ['Thubarahalli, off Varthur Road', 'Near Marathahalli and the ORR', 'Near ITPL and the Purple Line metro'],
+        images: ['assets/projects/sumadhura-solace-01.webp', 'assets/projects/sumadhura-solace-02.webp', 'assets/projects/sumadhura-solace-03.webp', 'assets/projects/sumadhura-solace-04.webp', 'assets/projects/sumadhura-solace-05.webp'],
+        photoDescription: 'Lakeside towers with classical detailing',
+        locationKey: 'bengaluru', localityKey: 'blr-whitefield', nearbyKeys: [],
+        budgetBands: ['b1', 'b2'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'tvs-emerald-altura',
+        developer: 'TVS Emerald', name: 'TVS Emerald Altura', location: 'Bagalur, North Bengaluru',
+        config: '2 & 3 BHK apartments',
+        sizes: '1,100 – 2,123 sq.ft',
+        tags: ['Japandi design', 'EDGE-certified', 'Twin clubhouses'],
+        description: 'A Japandi-inspired gated community of about 975 homes across 12 towers on 10 acres near Bagalur, EDGE-certified for sustainability, with 71% open space, hundreds of trees, an in-campus temple, and a man-made water body.',
+        curation: [
+          'Japandi design language across two clubhouses of 29,000+ sq.ft',
+          'EDGE green certification with 71% open space',
+          'Near Bagalur metro, Bhartiya City, and the airport corridor'
+        ],
+        amenities: ['Two Japandi clubhouses', 'Two pools and two gyms', 'Double-height badminton court', 'Pickleball court and golf simulator', 'Pilates studio', 'Sky cinema and mini theatre', 'Spa and salon', 'Rooftop cafes'],
+        connectivity: ['Near Bagalur metro', 'Near Bhartiya City and Manyata', 'About 20-30 min to the airport'],
+        images: ['assets/projects/tvs-emerald-altura-01.webp', 'assets/projects/tvs-emerald-altura-02.webp', 'assets/projects/tvs-emerald-altura-03.webp', 'assets/projects/tvs-emerald-altura-04.webp', 'assets/projects/tvs-emerald-altura-05.webp'],
+        photoDescription: 'Japandi facades over a podium water body',
+        locationKey: 'bengaluru', localityKey: 'blr-bagalur', nearbyKeys: [],
+        budgetBands: ['b1'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'tvs-emerald-serene-springs',
+        developer: 'TVS Emerald', name: 'TVS Emerald Serene Springs', location: 'Chennai',
+        config: '1 & 2 BHK senior-living residences',
+        sizes: '959 – 1,217 sq.ft',
+        tags: ['Senior living', 'On-site clinic', 'Managed community'],
+        description: 'A senior-living gated community of about 237 residences managed by Serene Communities by Columbia Pacific, India’s largest senior-living operator, designed around safety, comfort, and active community life with structured wellness programs.',
+        curation: [
+          'Professionally managed by India’s largest senior-living operator',
+          'On-site clinic with ambulance standby and physiotherapy',
+          'Senior-friendly design: ramps, wide corridors, non-slip floors, and emergency response'
+        ],
+        amenities: ['Clubhouse with community dining', 'Age-appropriate gymnasium and physiotherapy', 'On-site clinic and ambulance standby', 'Infinity walking pathway', 'Tennis and basketball courts', 'Fire pit and reading spaces', 'Curated meals and daily activities'],
+        connectivity: ['Chennai gated community with city access', 'Emergency response systems in every home'],
+        images: ['assets/projects/tvs-emerald-serene-springs-01.webp', 'assets/projects/tvs-emerald-serene-springs-02.webp', 'assets/projects/tvs-emerald-serene-springs-03.webp', 'assets/projects/tvs-emerald-serene-springs-04.webp', 'assets/projects/tvs-emerald-serene-springs-05.webp'],
+        photoDescription: 'Low-rise senior community gardens',
+        locationKey: 'chennai', localityKey: '', nearbyKeys: [],
+        budgetBands: ['b1'], purposes: ['live']
+      },
+      {
+        id: 'tvs-emerald-verde-vista',
+        developer: 'TVS Emerald', name: 'TVS Emerald Verde Vista', location: 'OMR corridor, Chennai',
+        status: 'New launch', possession: 'January 2030', config: '2, 3 & 4 BHK apartments',
+        sizes: '952 – 2,676 sq.ft',
+        tags: ['Low-rise living', 'Central green grove', 'IGBC Gold pre-certified'],
+        description: 'A low-rise, low-density community of 355 homes in five-floor blocks arranged around an expansive central green grove on the OMR corridor, IGBC Gold pre-certified, about 3 km from the upcoming Siruseri metro.',
+        curation: [
+          'Low-rise five-floor blocks around a central green grove',
+          'IGBC Gold pre-certified design with three open courtyards',
+          'On the OMR corridor near SIPCOT IT Park'
+        ],
+        amenities: ['10,000+ sq.ft clubhouse', 'Two-storey gymnasium', 'Swimming pool', 'Home theatre', 'Co-working space', 'Cricket pitch and skating rink', 'Rock-climbing wall', 'BBQ areas'],
+        connectivity: ['On the OMR corridor', 'About 3 km from the upcoming Siruseri metro', 'Near SIPCOT IT Park'],
+        images: ['assets/projects/tvs-emerald-verde-vista-01.webp', 'assets/projects/tvs-emerald-verde-vista-02.webp', 'assets/projects/tvs-emerald-verde-vista-03.webp', 'assets/projects/tvs-emerald-verde-vista-04.webp', 'assets/projects/tvs-emerald-verde-vista-05.webp'],
+        photoDescription: 'Low-rise blocks around a green grove',
+        locationKey: 'chennai', localityKey: 'che-omr', nearbyKeys: [],
+        budgetBands: ['b1'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'vaishnodevi-melange-one',
+        developer: 'Vaishnodevi Group', name: 'Vaishnodevi Melange One', location: 'Rajarajeshwari Nagar, Bengaluru',
+        config: '3 & 4 BHK sky villas',
+        sizes: '2,350 – 3,574 sq.ft',
+        tags: ['Full-floor sky villas', '200 m from metro', 'No shared walls'],
+        description: 'An ultra-luxury boutique tower of 32 floors in Rajarajeshwari Nagar where each sky villa occupies a full floor, with no shared walls, more than 75% green cover with native trees preserved, and the metro 200 metres away.',
+        curation: [
+          'Each residence is a full-floor sky villa with no shared walls',
+          'Just 200 m from RR Nagar metro',
+          'More than 75% green cover with the site’s native trees preserved'
+        ],
+        amenities: ['Grand clubhouse lounge', 'Swimming pool', 'Gymnasium and spa', 'Mini theatre', 'Co-working zones', 'Temple within the campus', 'Sports courts', 'Jogging track'],
+        connectivity: ['200 m to RR Nagar metro', 'Near Mysore Road and NICE Road', 'Quick reach to the ORR'],
+        images: ['assets/projects/vaishnodevi-melange-one-01.webp', 'assets/projects/vaishnodevi-melange-one-02.webp', 'assets/projects/vaishnodevi-melange-one-03.webp', 'assets/projects/vaishnodevi-melange-one-04.webp', 'assets/projects/vaishnodevi-melange-one-05.webp'],
+        photoDescription: 'Iconic tower above a gated entrance',
+        locationKey: 'bengaluru', localityKey: 'blr-rrnagar', nearbyKeys: [],
+        budgetBands: ['b2'], purposes: ['live', 'invest']
+      },
+      {
+        id: 'white-lotus',
+        developer: 'White Lotus', name: 'White Lotus Amanvana', location: 'Devanahalli, Bengaluru',
+        config: '4 BHK villas',
+        sizes: '3,700 – 4,000 sq.ft built-up',
+        tags: ['Balinese design', '7 villas per acre', 'Net-zero water'],
+        description: 'An ultra-luxury villa sanctuary of 95 homes across 14 acres in Devanahalli, at just seven villas per acre with 70% open space, designed on the Balinese Karang Jalananda philosophy with net-zero water planning.',
+        curation: [
+          'Just seven villas per acre with 70% of the land left open',
+          'Balinese design with double-height ceilings and private gardens',
+          'Net-zero-water community, 15-25 minutes from the airport via IVC Road'
+        ],
+        amenities: ['25,000 sq.ft clubhouse', 'Swimming pool and spa', 'Tennis, pickleball, and padel courts', 'Cricket nets and mini golf', 'Amphitheatre', 'Pet park', 'Co-working spaces', 'Cafe and supermarket'],
+        connectivity: ['15-25 min from Kempegowda International Airport via IVC Road', 'Devanahalli, near the Nandi Hills corridor'],
+        images: ['assets/projects/white-lotus-01.webp', 'assets/projects/white-lotus-02.webp', 'assets/projects/white-lotus-03.webp', 'assets/projects/white-lotus-04.webp', 'assets/projects/white-lotus-05.webp'],
+        photoDescription: 'Balinese villas amid tropical gardens',
+        locationKey: 'bengaluru', localityKey: 'blr-devanahalli', nearbyKeys: [],
+        budgetBands: ['b2', 'b3'], purposes: ['live', 'second', 'invest']
       }
     ];
   }

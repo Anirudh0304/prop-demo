@@ -778,8 +778,10 @@
 
     /* explore by city — editorial band */
     var cityCovers = { bengaluru: 'assets/projects/godrej-aveline-01.webp', mumbai: 'assets/projects/godrej-trilogy-01.webp',
-                       navimumbai: 'assets/projects/godrej-varanya-01.webp', pune: 'assets/projects/godrej-ivara-01.webp',
-                       hyderabad: 'assets/projects/godrej-brooklyn-avenue-01.webp', ncr: 'assets/projects/godrej-crown-01.webp' };
+                       navimumbai: 'assets/projects/godrej-varanya-01.webp', pune: 'assets/projects/sobha-nesara-01.webp',
+                       hyderabad: 'assets/projects/prestige-golden-grove-01.webp', ncr: 'assets/projects/godrej-crown-01.webp',
+                       chennai: 'assets/projects/tvs-emerald-verde-vista-01.webp', kerala: 'assets/projects/prestige-ocean-pearl-01.webp',
+                       giftcity: 'assets/projects/sobha-elysia-01.webp' };
     html += '<section class="cities"><div class="wrap">' +
       '<div class="sec-head"><div class="eyebrow">Explore by city</div>' +
         '<h2>Where do you see <em style="font-style:italic">yourself</em>?</h2></div>' +
@@ -1634,7 +1636,7 @@
   }
   window.addEventListener('focus', refreshStores);
   window.addEventListener('storage', function (e) {
-    if (e.key === 'propstar_properties_v3' || e.key === 'propstar_quiz_v4') refreshStores();
+    if (e.key === 'propstar_properties_v4' || e.key === 'propstar_quiz_v5') refreshStores();
   });
 
   routeFromHash();
