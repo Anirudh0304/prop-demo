@@ -738,7 +738,21 @@
   };
   window.Admin = Admin;
 
-  render();
+  /* content loads before the first paint — see propstar-data.js */
+  P.boot().then(function () {
+    S.props = P.load();
+    render();
+  }, function (err) {
+    el('root').innerHTML = '<div class="gate"><div class="gate-card">' +
+      '<img src="assets/propstar-mark-96.png" alt="Propstar">' +
+      '<h1>Content unavailable</h1>' +
+      '<p>The catalogue files could not be loaded, so the console cannot open. ' +
+      (location.protocol === 'file:'
+        ? 'Serve the folder (npx serve . -l 3030) instead of opening this file directly.'
+        : 'Refresh in a moment, or check that content/catalogue.json deployed.') +
+      '</p></div></div>';
+    if (window.console && console.error) console.error('[Propstar admin] content failed to load:', err);
+  });
 })();
 </script>
 </body>

@@ -1135,6 +1135,9 @@
 
   /* ============ render root ============ */
   function render() {
+    /* events (hashchange, window focus) can fire before content arrives —
+       boot() calls render() again once it does */
+    if (!P.ready()) return;
     renderNav();
     var v = el('view');
     v.innerHTML = '<div class="view-in">' +
@@ -1639,10 +1642,33 @@
     if (e.key === 'propstar_properties_v4' || e.key === 'propstar_quiz_v5') refreshStores();
   });
 
-  routeFromHash();
-  render();
-  renderModal();
-  Engage.init();
+  /* ============ boot ============ */
+  /* Content is fetched once, before the first paint. Everything above reads
+     it synchronously from the data layer's cache, so no other code needs to
+     know it was ever asynchronous. */
+  function contentError(err) {
+    var onDisk = location.protocol === 'file:';
+    el('bg').style.opacity = '0';
+    el('view').innerHTML =
+      '<section class="page"><div class="wrap legal" style="text-align:center">' +
+        '<img src="assets/propstar-mark-96.png" alt="Propstar" style="height:34px;margin:0 auto 18px">' +
+        '<div class="eyebrow">Content unavailable</div>' +
+        '<h1 style="font-size:clamp(26px,4vw,38px);line-height:1.12;margin:12px 0 12px">We could not load the collection.</h1>' +
+        '<p>' + (onDisk
+          ? 'This page was opened straight from disk. Serve the folder instead (npx serve . -l 3030) so the content files can load.'
+          : 'Please refresh in a moment. If this persists, the content files may not have finished deploying.') +
+        '</p>' +
+      '</div></section>';
+    if (window.console && console.error) console.error('[Propstar] content failed to load:', err);
+  }
+
+  P.boot().then(function () {
+    S.props = P.load();
+    routeFromHash();
+    render();
+    renderModal();
+    Engage.init();
+  }, contentError);
 })();
 </script>
 </body>

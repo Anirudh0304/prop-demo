@@ -1,0 +1,227 @@
+{
+ "questions": {
+  "city": {
+   "on": true,
+   "q": "Where are you looking to buy?",
+   "h": "Pick the city you want to explore."
+  },
+  "locality": {
+   "on": false,
+   "q": "Any preferred neighbourhoods?",
+   "h": "Optional — helps us narrow the shortlist."
+  },
+  "budget": {
+   "on": true,
+   "q": "What's your investment range?",
+   "h": "Used only to curate — never shown on the site."
+  },
+  "purpose": {
+   "on": false,
+   "q": "What's this home for?",
+   "h": "So we weight the right things."
+  }
+ },
+ "locations": [
+  {
+   "key": "bengaluru",
+   "label": "Bengaluru",
+   "hint": "Garden city, tech capital",
+   "localities": [
+    {
+     "key": "blr-yelahanka",
+     "label": "Yelahanka"
+    },
+    {
+     "key": "blr-sarjapur",
+     "label": "Sarjapur Road"
+    },
+    {
+     "key": "blr-bannerghatta",
+     "label": "Bannerghatta Road"
+    },
+    {
+     "key": "blr-devanahalli",
+     "label": "Devanahalli"
+    },
+    {
+     "key": "blr-whitefield",
+     "label": "Whitefield"
+    },
+    {
+     "key": "blr-north",
+     "label": "North Bengaluru"
+    },
+    {
+     "key": "blr-bagalur",
+     "label": "Bagalur"
+    },
+    {
+     "key": "blr-chandapura",
+     "label": "Chandapura-Anekal"
+    },
+    {
+     "key": "blr-rrnagar",
+     "label": "Rajarajeshwari Nagar"
+    }
+   ]
+  },
+  {
+   "key": "mumbai",
+   "label": "Mumbai",
+   "hint": "The maximum city",
+   "localities": [
+    {
+     "key": "mum-wadala",
+     "label": "Wadala"
+    },
+    {
+     "key": "mum-worli",
+     "label": "Worli"
+    },
+    {
+     "key": "mum-versova",
+     "label": "Versova"
+    },
+    {
+     "key": "mum-parel",
+     "label": "Parel"
+    }
+   ]
+  },
+  {
+   "key": "navimumbai",
+   "label": "Navi Mumbai",
+   "hint": "The planned city, near NMIA",
+   "localities": [
+    {
+     "key": "nvm-kharghar",
+     "label": "Kharghar"
+    }
+   ]
+  },
+  {
+   "key": "pune",
+   "label": "Pune",
+   "hint": "The IT and hillside corridors",
+   "localities": [
+    {
+     "key": "pun-kharadi",
+     "label": "Kharadi"
+    },
+    {
+     "key": "pun-kothrud",
+     "label": "Kothrud"
+    }
+   ]
+  },
+  {
+   "key": "hyderabad",
+   "label": "Hyderabad",
+   "hint": "KPHB to the Financial District",
+   "localities": [
+    {
+     "key": "hyd-kukatpally",
+     "label": "Kukatpally"
+    },
+    {
+     "key": "hyd-tellapur",
+     "label": "Tellapur"
+    }
+   ]
+  },
+  {
+   "key": "ncr",
+   "label": "Delhi NCR",
+   "hint": "Noida, Greater Noida & Gurugram",
+   "localities": [
+    {
+     "key": "ncr-sigma3",
+     "label": "Sigma III, Greater Noida"
+    },
+    {
+     "key": "ncr-sec44",
+     "label": "Sector 44, Noida"
+    },
+    {
+     "key": "ncr-sohna",
+     "label": "Sohna Road, Gurugram"
+    },
+    {
+     "key": "ncr-golfcourse",
+     "label": "Golf Course Road, Gurugram"
+    },
+    {
+     "key": "ncr-dwarka",
+     "label": "Dwarka Expressway, Gurugram"
+    }
+   ]
+  },
+  {
+   "key": "chennai",
+   "label": "Chennai",
+   "hint": "The southern gateway",
+   "localities": [
+    {
+     "key": "che-koyambedu",
+     "label": "Koyambedu"
+    },
+    {
+     "key": "che-omr",
+     "label": "OMR corridor"
+    }
+   ]
+  },
+  {
+   "key": "kerala",
+   "label": "Kerala",
+   "hint": "Kochi & Kozhikode",
+   "localities": [
+    {
+     "key": "ker-kochi",
+     "label": "Kochi"
+    },
+    {
+     "key": "ker-kozhikode",
+     "label": "Kozhikode"
+    }
+   ]
+  },
+  {
+   "key": "giftcity",
+   "label": "GIFT City",
+   "hint": "India's first smart city",
+   "localities": []
+  }
+ ],
+ "budgets": [
+  {
+   "key": "b1",
+   "label": "₹1 – 3 Cr"
+  },
+  {
+   "key": "b2",
+   "label": "₹3 – 7 Cr"
+  },
+  {
+   "key": "b3",
+   "label": "₹7 Cr +"
+  }
+ ],
+ "purposes": [
+  {
+   "key": "live",
+   "label": "To live in",
+   "hint": "Your primary home"
+  },
+  {
+   "key": "invest",
+   "label": "Investment",
+   "hint": "Growth & rental yield"
+  },
+  {
+   "key": "second",
+   "label": "Second home",
+   "hint": "A weekend retreat"
+  }
+ ]
+}
