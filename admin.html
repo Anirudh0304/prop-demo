@@ -259,9 +259,10 @@
       '<p>Curators only. Sign in to edit the catalogue and the quiz.</p>' +
       '<form onsubmit="Admin.signIn(event)">' +
         '<input id="pass" type="password" placeholder="Passcode" autocomplete="current-password">' +
+        '<div id="pass-err"></div>' +
         '<button class="btn" type="submit">Enter console</button>' +
       '</form>' +
-      '<div class="note">Prototype auth — any passcode works. Replace with real authentication before deployment.</div>' +
+      '<div class="note">Access is limited to the Propstar team.</div>' +
     '</div></div>';
   }
 
@@ -544,8 +545,31 @@
   var Admin = {
     signIn: function (ev) {
       ev.preventDefault();
-      sessionStorage.setItem(AUTH_KEY, '1');
-      S.authed = true; render();
+      /* Only the SHA-256 hash of the passcode lives in this file — the
+         passcode itself is never in the source. To change it, hash the new
+         passcode (e.g. `python -c "import hashlib;print(hashlib.sha256(
+         'new-passcode'.encode()).hexdigest())"`) and replace PASS_HASH.
+         Note: client-side gating deters casual visitors; it is not server
+         security. Anyone determined can read the browser data on this page. */
+      var PASS_HASH = 'c7045e6352f13f3083f8b5cf63c28074dd107259508e2c85f39351376be27b6a';
+      var entered = (el('pass').value || '');
+      var err = el('pass-err');
+      if (!window.crypto || !crypto.subtle) {
+        if (err) err.innerHTML = '<div class="note" style="color:#C2483C">Sign-in needs a secure context. Open the console over https or localhost.</div>';
+        return;
+      }
+      crypto.subtle.digest('SHA-256', new TextEncoder().encode(entered)).then(function (buf) {
+        var hex = Array.prototype.map.call(new Uint8Array(buf), function (b) {
+          return b.toString(16).padStart(2, '0');
+        }).join('');
+        if (hex === PASS_HASH) {
+          try { sessionStorage.setItem(AUTH_KEY, '1'); } catch (e) {}
+          S.authed = true; render();
+        } else {
+          if (err) err.innerHTML = '<div class="note" style="color:#C2483C">That passcode is not right. Try again.</div>';
+          el('pass').value = ''; el('pass').focus();
+        }
+      });
     },
     setTab: function (t) { S.tab = t; if (t === 'quiz' && !S.quizDraft) S.quizDraft = P.quizConfig(); render(); },
     search: function (v) {

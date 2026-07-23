@@ -21,7 +21,10 @@ From inside this folder:
 npx serve . -l 3030
 ```
 Then open `http://localhost:3030` (site) and `http://localhost:3030/admin.html` (console).
-Any passcode signs into the admin (prototype auth — replace before real deployment).
+The admin requires a passcode (ask the site owner). Only its SHA-256 hash lives in
+`admin.html` (`PASS_HASH` in `Admin.signIn`) — to rotate it, hash a new passcode and
+replace that constant. Client-side gating deters casual visitors, but for real
+security put server auth in front of `admin.html` before any serious use.
 
 No Node? Any static server works — `python3 -m http.server 3030` is fine too. The
 scroll-scrubbed hero video prefers a server with HTTP Range support (`npx serve` has it),
