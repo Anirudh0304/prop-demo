@@ -156,7 +156,17 @@ var budgetOpts = quiz.budgets.map(function (b) { return { label: b.label, value:
 var purposeOpts = quiz.purposes.map(function (p) { return { label: p.label, value: p.key }; });
 
 var template = fs.readFileSync(CMS_CONFIG + '.template', 'utf8');
-var config = template
+
+/* swap the template's own explanation for a warning aimed at whoever opens
+   the generated file, so nobody edits the copy that gets overwritten */
+var GENERATED_HEADER = [
+  '# GENERATED FILE — do not edit.',
+  '# Written by scripts/build-content.js from cms/config.yml.template.',
+  '# Any change here is overwritten on the next build. Edit the template.',
+  '', ''
+].join('\n');
+
+var config = (GENERATED_HEADER + template.replace(/^#[\s\S]*?(?=^backend:)/m, ''))
   .replace('#{CITY_OPTIONS}', yamlOptions(cityOpts, 12))
   .replace('#{LOCALITY_OPTIONS}', yamlOptions(localityOpts, 12))
   .replace('#{NEARBY_OPTIONS}', yamlOptions(cityOpts, 12))

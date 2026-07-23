@@ -1,10 +1,6 @@
-# Sveltia CMS configuration — TEMPLATE.
-#
-# cms/config.yml is GENERATED from this file by scripts/build-content.js.
-# Edit this template, never config.yml directly, or your change is overwritten
-# on the next build. The #{...} markers are filled with the current city,
-# locality, budget, and purpose options from content/quiz.json so the dropdowns
-# can never drift out of step with the quiz.
+# GENERATED FILE — do not edit.
+# Written by scripts/build-content.js from cms/config.yml.template.
+# Any change here is overwritten on the next build. Edit the template.
 
 backend:
   name: github
