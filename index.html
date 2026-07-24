@@ -704,7 +704,7 @@
   }
 
   function optRow(kind, key, label, hint, on) {
-    return '<button class="opt' + (on ? ' on' : '') + '" onclick="App.pick(\'' + kind + '\',\'' + key + '\')">' +
+    return '<button class="opt' + (on ? ' on' : '') + '" data-optkey="' + esc(key) + '" onclick="App.pick(\'' + kind + '\',\'' + key + '\')">' +
       '<span><span class="t">' + esc(label) + '</span>' +
       (hint ? '<div class="h">' + esc(hint) + '</div>' : '') + '</span>' +
       '<span class="dot"></span></button>';
@@ -1222,8 +1222,14 @@
       S.answers[map[kind]] = key;
       if (kind === 'city') S.answers.locality = null;
       var total = P.activeSteps().length;
-      /* brief highlight, then advance — deliberate, never rushed */
-      rerenderWizard();
+      /* Highlight the choice IN PLACE — re-rendering here would rebuild the
+         step and replay its slide-in animation, so the same question would
+         visibly re-enter before advancing. Just toggle the .on class, then
+         advance (which re-renders the NEXT question once, cleanly). */
+      var opts = document.querySelectorAll('#wizmount .opt');
+      Array.prototype.forEach.call(opts, function (b) {
+        b.classList.toggle('on', b.getAttribute('data-optkey') === key);
+      });
       setTimeout(function () {
         if (S.step < total) { S.step++; rerenderWizard(); }
         else if (S.lead) { App.finish(); }
